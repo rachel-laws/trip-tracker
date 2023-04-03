@@ -18,16 +18,20 @@
   <body>
     <header>
       <div class="title">
-        <img src="" alt="" />
-        <h1><i class="bi bi-bank"></i> TripTracker</h1>
+        <img src="/assets/logo.svg" alt="TripTracker" />
       </div>
       <nav id="navBar" class="nav__hidden">
-        <button id="viewTripsBtn"><i class="bi bi-airplane"></i> Trips</button>
-        <button id="changeBudgetBtn">
-          <i class="bi bi-cash-stack"></i> Budget
+        <button id="viewTripsBtn" aria-controls="tripsModal">
+          <i class="bi bi-airplane"></i> Trips
+          <span class="sr-only">Open your trips</span>
         </button>
-        <button id="changeCurrencyBtn">
+        <button id="changeBudgetBtn" aria-controls="budgetModal">
+          <i class="bi bi-cash-stack"></i> Budget
+          <span class="sr-only">Open budget settings</span>
+        </button>
+        <button id="changeCurrencyBtn" aria-controls="currencyModal">
           <i class="bi bi-coin"></i> Currency
+          <span class="sr-only">Open currency settings</span>
         </button>
       </nav>
       <button
@@ -35,66 +39,40 @@
         class="toggleMobileNav"
         aria-controls="navBar"
         aria-expanded="false">
-        <span class="sr-only">Navigation Menu</span>
         <i id="navIcon" class="bi bi-list"></i>
+        <span class="sr-only">Toggle navigation menu</span>
       </button>
     </header>
     <main>
-      <dialog id="tripsModal" class="tripsModal modal">
-        <button id="closeTripsModal" class="closeModal">
-          <i class="bi bi-x-lg"></i>
-          <p class="trips__title">Your Trips</p>
-        </button>
-        <div class="trips__container"></div>
-      </dialog>
-      <dialog id="currencyModal" class="currencyModal modal">
-        <button id="closeCurrencyModal" class="closeModal">
-          <i class="bi bi-x-lg"></i>
-        </button>
-        <p class="currency__title">Current Currency</p>
-        <div class="currency__current">
-          <img src="/assets/us-flag.svg" alt="USA Flag" />
-          <p class="currentCurrency">USD</p>
-        </div>
-        <form>
-          <label for="changeCurrency"
-            >Change<span class="sr-only"> Default</span> Currency</label
-          >
-          <select
-            id="changeCurrency"
-            class="changeCurrency"
-            name="changeCurrency">
-            <option id="USD" value="USD">USD</option>
-            <option id="EUR" value="EUR">EUR</option>
-            <option id="HRK" value="HRK">HRK</option>
-          </select>
-          <input type="submit" id="submitCurrencyBtn" value="Enter" />
-        </form>
-      </dialog>
-
-      <dialog id="budgetModal" class="budgetModal modal">
-        <button id="closeBudgetModal" class="closeModal">
-          <i class="bi bi-x-lg"></i>
-        </button>
-        <form id="budgetForm">
-          <label for="setBudgetAmount">Set Budget</label>
-          <input type="text" name="setBudgetAmount" id="setBudgetAmount" />
-          <input type="submit" value="Enter" />
-        </form>
-      </dialog>
-
+      <a href="#budget" class="sr-only">Skip to Budget and Balance</a>
+      <a href="#expenses" class="sr-only">Skip to Expenses</a>
       <section id="budget" class="budget">
         <div class="budget__current">
-          <h2><span class="mobile-hidden">Your </span>Budget</h2>
-          <p id="currentBudget">~</p>
+          <h1 id="budget__heading">
+            <span class="mobile-hidden">Your </span>Budget
+          </h1>
+          <p
+            id="currentBudget"
+            aria-labelledby="budget__heading"
+            aria-live="polite">
+            ~
+          </p>
         </div>
         <div class="balance__current">
-          <h2><span class="mobile-hidden">Current </span> Balance</h2>
-          <p id="currentBalance">~</p>
+          <h1 id="balance__heading">
+            <span class="mobile-hidden">Current </span>Balance
+          </h1>
+          <p
+            id="currentBalance"
+            aria-labelledby="balance__heading"
+            aria-live="polite">
+            ~
+          </p>
         </div>
       </section>
-
       <section id="expenses" class="expenses">
+        <a href="#newExpense" class="sr-only">Skip to Add a New Expense</a>
+        <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
         <form id="newExpense">
           <legend>Add<span class="sr-only"> New</span> Expense</legend>
           <fieldset>
@@ -105,7 +83,9 @@
                 class="setExpenseTitle"
                 type="text"
                 name="setExpenseTitle"
-            /></label>
+                placeholder="Enter Expense Title"
+                required />
+            </label>
             <div class="expense__form-wrapper">
               <label for="setExpenseCost"
                 >Cost
@@ -114,10 +94,12 @@
                   class="setExpenseCost"
                   type="text"
                   name="setExpenseCost"
-              /></label>
-              <label for="selectCurrency"
-                >Currency
-                <select name="changeCurrency" id="selectCurrency">
+                  placeholder="$"
+                  required />
+              </label>
+              <label for="selectCurrency">
+                <span class="sr-only">Expense </span>Currency
+                <select id="selectCurrency" name="changeCurrency" required>
                   <option id="USD" value="USD">USD</option>
                   <option id="EUR" value="EUR">Euros</option>
                   <option id="HRK" value="HRK">Kunas</option>
@@ -134,16 +116,79 @@
             <li>Date</li>
             <li class="mobile-hidden">Balance</li>
           </ul>
-          <div id='expenseItems' class="expense__items"></div>
+          <div id="expenseItems" class="expense__items"></div>
         </div>
       </section>
+      <!-- View Trips -->
+      <dialog id="tripsModal" class="tripsModal modal">
+        <button
+          aria-controls="tripsModal"
+          aria-modal="true"
+          id="closeTripsModal"
+          class="closeModal">
+          <i class="bi bi-x-lg"></i>
+          <span class="sr-only">Manage your trips</span>
+        </button>
+        <p class="trips__title">Your Trips</p>
+        <div class="trips__container"></div>
+      </dialog>
+      <!-- Change Currency -->
+      <dialog id="currencyModal" class="currencyModal modal" aria-modal="true">
+        <button
+          id="closeCurrencyModal"
+          aria-controls="currencyModal"
+          class="closeModal">
+          <i class="bi bi-x-lg"></i>
+          <span class="sr-only">Close currency settings</span>
+        </button>
+        <p class="currency__title">Current Currency</p>
+        <div class="currency__current">
+          <img id="currency__img" src="/assets/us-flag.svg" alt="USA Flag" />
+          <p id="currentCurrency" class="currentCurrency" aria-live="polite">
+            USD
+          </p>
+        </div>
+        <form>
+          <label for="changeCurrency"
+            >Change<span class="sr-only"> Default</span> Currency
+          </label>
+          <select
+            id="changeCurrency"
+            class="changeCurrency"
+            name="changeCurrency"
+            required>
+            <option id="USD" value="USD">USD</option>
+            <option id="EUR" value="EUR">EUR</option>
+            <option id="HRK" value="HRK">HRK</option>
+          </select>
+          <input type="submit" id="submitCurrencyBtn" value="Enter" />
+        </form>
+      </dialog>
+      <!-- Change Budget -->
+      <dialog id="budgetModal" class="budgetModal modal" aria-modal="true">
+        <button
+          id="closeBudgetModal"
+          aria-controls="budgetModal"
+          class="closeModal">
+          <i class="bi bi-x-lg"></i>
+          <span class="sr-only">Close budget settings</span>
+        </button>
+        <form id="budgetForm">
+          <label for="setBudgetAmount">Set Budget</label>
+          <input
+            id="setBudgetAmount"
+            type="text"
+            name="setBudgetAmount"
+            placeholder="Enter new budget"
+            required />
+          <input type="submit" value="Enter" />
+        </form>
+      </dialog>
     </main>
     <footer>
-      <!-- <ul>
-        <li><a href="">Source Code</a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul> -->
+      <!-- <li><a href="" target="_blank">Source Code</a></li> -->
+      <a href="#budget" class="sr-only">Back to Budget and Balance</a>
+      <a href="#expenses" class="sr-only">Back to Expenses</a>
     </footer>
     <script src="./js/main.js" type="module"></script>
   </body>
