@@ -13,7 +13,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>TripTracker</title>
+    <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg" />
+    <title>TripTrackr</title>
   </head>
   <body>
     <header>
@@ -94,7 +95,7 @@
                   class="setExpenseCost"
                   type="text"
                   name="setExpenseCost"
-                  placeholder="$"
+                  placeholder="$0.00"
                   required />
               </label>
               <label for="selectCurrency">
@@ -106,7 +107,7 @@
                 </select>
               </label>
             </div>
-            <input id="addExpense" type="submit" value="Enter" />
+            <input id="addExpense" type="submit" class="submit" value="Enter" />
           </fieldset>
         </form>
         <div class="expense__container">
@@ -161,7 +162,11 @@
             <option id="EUR" value="EUR">EUR</option>
             <option id="HRK" value="HRK">HRK</option>
           </select>
-          <input type="submit" id="submitCurrencyBtn" value="Enter" />
+          <input
+            type="submit"
+            class="submit"
+            id="submitCurrencyBtn"
+            value="Enter" />
         </form>
       </dialog>
       <!-- Change Budget -->
@@ -181,12 +186,14 @@
             name="setBudgetAmount"
             placeholder="Enter new budget"
             required />
-          <input type="submit" value="Enter" />
+          <input type="submit" class="submit" value="Enter" />
         </form>
       </dialog>
     </main>
     <footer>
-      <!-- <li><a href="" target="_blank">Source Code</a></li> -->
+      <a href="" target="_blank"
+        ><i class="bi bi-code-slash"></i> Source Code</a
+      >
       <a href="#budget" class="sr-only">Back to Budget and Balance</a>
       <a href="#expenses" class="sr-only">Back to Expenses</a>
     </footer>
