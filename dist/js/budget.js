@@ -8,7 +8,7 @@ const currentBudget = document.querySelector('#currentBudget');
 let localStorageBudget = JSON.parse(localStorage.getItem('budget'));
 
 export let budget =
-  localStorage.getItem('budget') !== null ? localStorageBudget : 0;
+  localStorage.getItem('budget') !== null ? localStorageBudget : '0.00';
 
 // Enter new budget
 export const newBudgetAmount = () => {
