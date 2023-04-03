@@ -1,0 +1,472 @@
+/* Global & Resets */
+
+:root {
+  --text-color: #f1f1f1;
+
+  --header-bg: #414141;
+  --body-bg: #1f1f1f;
+  --backdrop: rgb(0 0 0 / 0.3);
+
+  --nav-button-bg: #272727;
+  --button-bg: #555555;
+  --expense-bg: #2c2c2c;
+  --container-bg: #131313;
+
+  --border-radius: 2px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-color);
+
+  background: var(--body-bg);
+}
+
+img,
+input {
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input[type='submit'] {
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+
+  border: none;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 0.5rem 1rem;
+
+  text-align: center;
+  background: var(--header-bg);
+}
+
+header h1 {
+  font-size: 1.4rem;
+}
+
+/* Nav Buttons */
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+nav button {
+  width: 8.5rem;
+  padding: 0.35rem 0.5rem;
+
+  font-size: 1.1rem;
+
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--nav-button-bg);
+}
+
+.toggleMobileNav {
+  display: none;
+  z-index: 999;
+
+  padding: 3px;
+  font-size: 2rem;
+  background: transparent;
+}
+
+nav button i {
+  margin-right: 3px;
+}
+
+/* Change Currency */
+
+.modal {
+  position: relative;
+
+  margin: auto;
+  padding: 2.5rem 4rem;
+
+  color: var(--text-color);
+  text-align: center;
+
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--container-bg);
+}
+
+.currency__current {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+
+  margin-bottom: 1.5rem;
+  padding: 0rem 0.5rem 1.5rem;
+
+  border-bottom: 1px solid var(--text-color);
+}
+
+.currency__title {
+  margin-bottom: 1rem;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.currency__current img {
+  height: 40px;
+}
+
+.currentCurrency {
+  font-size: 2rem;
+}
+
+.modal::backdrop {
+  background: var(--backdrop);
+  backdrop-filter: blur(3px);
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modal label {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.modal select,
+.modal input {
+  padding: 0.5rem;
+
+  font-size: 1rem;
+  text-align: center;
+
+  border-radius: var(--border-radius);
+  background: var(--text-color);
+}
+
+.modal select {
+  -webkit-appearance: none;
+  appearance: none;
+
+  cursor: pointer;
+}
+
+.modal input[type='submit'] {
+  padding: 0.5rem;
+
+  color: var(--text-color);
+  font-weight: 600;
+
+  border-radius: var(--border-radius);
+  background: var(--button-bg);
+}
+
+.closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 6px 9px;
+
+  font-size: 1.3rem;
+  color: var(--text-color);
+
+  background: transparent;
+  transition: 150ms ease;
+}
+
+.closeModal:hover {
+  font-size: 1.5rem;
+}
+
+/* Sections */
+
+section {
+  display: flex;
+  gap: 3rem;
+
+  max-width: 900px;
+
+  margin: 3rem auto 0rem;
+  padding: 3rem 2rem;
+
+  border-radius: var(--border-radius);
+  background: var(--container-bg);
+}
+
+.trips,
+.expenses {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Budget Section */
+
+.budget {
+  justify-content: center;
+  align-items: center;
+  gap: calc(0.5rem + 9vw);
+
+  text-align: center;
+}
+
+.budget h2 {
+  margin-bottom: 1rem;
+}
+
+.budget p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.budget__current p {
+  color: transparent;
+  background: linear-gradient(rgb(185 255 185), rgb(17, 133, 11));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.balance__current p {
+  color: transparent;
+  background: linear-gradient(rgb(253 203 174), rgb(255, 94, 0));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Expenses Section */
+
+section:last-of-type {
+  margin-bottom: 3rem;
+}
+
+/* Add New Expense */
+
+.expenses form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.expenses legend {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.expenses fieldset {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+
+  width: 100%;
+  padding: 0.75rem 1rem 1rem;
+
+  border-radius: var(--border-radius);
+}
+
+.expenses label {
+  font-weight: 600;
+  text-align: center;
+}
+
+.expenses input:not([type='submit']),
+.expenses select {
+  display: block;
+
+  height: 1.4rem;
+  margin-top: 8px;
+
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--text-color);
+}
+
+.setExpenseTitle {
+  width: 11rem;
+}
+
+.expense__form-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.setExpenseCost {
+  width: 5rem;
+}
+
+.expenses select {
+  width: 5rem;
+  text-align: center;
+}
+
+.expenses input[type='submit'] {
+  align-self: end;
+
+  height: 1.4rem;
+  width: 3.25rem;
+
+  font-family: inherit;
+  font-weight: 600;
+
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--button-bg);
+}
+
+/* Expense Tracker */
+
+.expense__container {
+  width: 90%;
+}
+
+.expense__categories,
+.expense__item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  align-items: center;
+
+  padding: 0.25rem;
+
+  font-size: 1.1rem;
+  text-align: center;
+  list-style: none;
+}
+
+.expense__categories {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+
+  border-bottom: 1px solid var(--text-color);
+}
+
+.expense__items {
+  display: grid;
+  gap: 1rem;
+}
+
+.expense__item {
+  justify-content: space-evenly;
+  list-style: none;
+  border-radius: var(--border-radius);
+  background: var(--expense-bg);
+}
+
+/* Accessibility */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Media Queries */
+
+@media all and (max-width: 700px) {
+  section {
+    margin: 1rem 0rem;
+    padding-inline: 0rem;
+  }
+
+  .currencyModal {
+    padding-inline: 1.5rem;
+  }
+
+  .expense__categories,
+  .expense__item {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .expenses fieldset {
+    align-items: center;
+    flex-direction: column;
+
+    gap: 0.5rem;
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .expenses form {
+    width: 90%;
+  }
+
+  .expenses input[type='submit'] {
+    align-self: auto;
+    margin-top: 8px;
+    width: 5rem;
+  }
+
+  header {
+    padding-inline: 1rem;
+  }
+
+  nav {
+    position: fixed;
+    justify-content: flex-start;
+    flex-direction: column;
+    inset: 0;
+
+    padding-top: 40%;
+    background: var(--container-bg);
+  }
+
+  .toggleMobileNav {
+    display: block;
+  }
+
+  .nav__visible {
+    display: flex;
+  }
+
+  .nav__hidden {
+    display: none;
+  }
+
+  nav button {
+    font-size: 1.3rem;
+    width: 75%;
+    max-width: 15rem;
+  }
+
+  .mobile-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TripTracker</title>
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <img src="" alt="" />
+        <h1><i class="bi bi-bank"></i> TripTracker</h1>
+      </div>
+      <nav id="navBar" class="nav__hidden">
+        <button id="viewTripsBtn"><i class="bi bi-airplane"></i> Trips</button>
+        <button id="changeBudgetBtn">
+          <i class="bi bi-cash-stack"></i> Budget
+        </button>
+        <button id="changeCurrencyBtn">
+          <i class="bi bi-coin"></i> Currency
+        </button>
+      </nav>
+      <button
+        id="toggleMobileNav"
+        class="toggleMobileNav"
+        aria-controls="navBar"
+        aria-expanded="false">
+        <span class="sr-only">Navigation Menu</span>
+        <i id="navIcon" class="bi bi-list"></i>
+      </button>
+    </header>
+    <main>
+      <dialog id="tripsModal" class="tripsModal modal">
+        <button id="closeTripsModal" class="closeModal">
+          <i class="bi bi-x-lg"></i>
+          <p class="trips__title">Your Trips</p>
+        </button>
+        <div class="trips__container"></div>
+      </dialog>
+      <dialog id="currencyModal" class="currencyModal modal">
+        <button id="closeCurrencyModal" class="closeModal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <p class="currency__title">Current Currency</p>
+        <div class="currency__current">
+          <img src="/assets/us-flag.svg" alt="USA Flag" />
+          <p class="currentCurrency">USD</p>
+        </div>
+        <form>
+          <label for="changeCurrency"
+            >Change<span class="sr-only"> Default</span> Currency</label
+          >
+          <select
+            id="changeCurrency"
+            class="changeCurrency"
+            name="changeCurrency">
+            <option id="USD" value="USD">USD</option>
+            <option id="EUR" value="EUR">EUR</option>
+            <option id="HRK" value="HRK">HRK</option>
+          </select>
+          <input type="submit" id="submitCurrencyBtn" value="Enter" />
+        </form>
+      </dialog>
+
+      <dialog id="budgetModal" class="budgetModal modal">
+        <button id="closeBudgetModal" class="closeModal">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <form id="budgetForm">
+          <label for="setBudgetAmount">Set Budget</label>
+          <input type="text" name="setBudgetAmount" id="setBudgetAmount" />
+          <input type="submit" value="Enter" />
+        </form>
+      </dialog>
+
+      <section id="budget" class="budget">
+        <div class="budget__current">
+          <h2><span class="mobile-hidden">Your </span>Budget</h2>
+          <p id="currentBudget">~</p>
+        </div>
+        <div class="balance__current">
+          <h2><span class="mobile-hidden">Current </span> Balance</h2>
+          <p id="currentBalance">~</p>
+        </div>
+      </section>
+
+      <section id="expenses" class="expenses">
+        <form id="newExpense">
+          <legend>Add<span class="sr-only"> New</span> Expense</legend>
+          <fieldset>
+            <label for="setExpenseTitle"
+              >Title
+              <input
+                id="setExpenseTitle"
+                class="setExpenseTitle"
+                type="text"
+                name="setExpenseTitle"
+            /></label>
+            <div class="expense__form-wrapper">
+              <label for="setExpenseCost"
+                >Cost
+                <input
+                  id="setExpenseCost"
+                  class="setExpenseCost"
+                  type="text"
+                  name="setExpenseCost"
+              /></label>
+              <label for="selectCurrency"
+                >Currency
+                <select name="changeCurrency" id="selectCurrency">
+                  <option id="USD" value="USD">USD</option>
+                  <option id="EUR" value="EUR">Euros</option>
+                  <option id="HRK" value="HRK">Kunas</option>
+                </select>
+              </label>
+            </div>
+            <input id="addExpense" type="submit" value="Enter" />
+          </fieldset>
+        </form>
+        <div class="expense__container">
+          <ul class="expense__categories">
+            <li>Title</li>
+            <li>Cost</li>
+            <li>Date</li>
+            <li class="mobile-hidden">Balance</li>
+          </ul>
+          <div id='expenseItems' class="expense__items"></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <!-- <ul>
+        <li><a href="">Source Code</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+      </ul> -->
+    </footer>
+    <script src="./js/main.js" type="module"></script>
+  </body>
+</html>
