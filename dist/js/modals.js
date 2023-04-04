@@ -8,9 +8,10 @@ const openModal = (modalBtn, modal) => {
 };
 
 // Close Modal
-const closeModal = (modalBtn, modal) => {
+const closeModal = (modalBtn, modal, form) => {
   modalBtn.addEventListener('click', () => {
     modal.close();
+    form.reset();
   });
 };
 
@@ -41,7 +42,8 @@ export const operateBudgetModal = () => {
   const budgetModal = document.querySelector('#budgetModal');
   const openBudgetModal = document.querySelector('#changeBudgetBtn');
   const closeBudgetModal = document.querySelector('#closeBudgetModal');
+  const budgetForm = document.querySelector('#budgetForm');
 
   openModal(openBudgetModal, budgetModal);
-  closeModal(closeBudgetModal, budgetModal);
+  closeModal(closeBudgetModal, budgetModal, budgetForm);
 };

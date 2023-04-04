@@ -1,4 +1,3 @@
-import { calculateCurrentBalance, calculateNewBalance } from './balance.js';
 import { budget } from './budget.js';
 
 //* Add expenses
@@ -42,41 +41,50 @@ export const localStorageTransactions = JSON.parse(
 );
 
 // Add transaction
-export let transactions =
+export const transactions =
   localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
+// New transaction
 export const addTransaction = () => {
   let titleValue = setExpenseTitle.value;
   let costValue = setExpenseCost.value;
-  // New transaction
+
+  // Calculate total expenses
+  const expenses = transactions.map(transaction =>
+    parseFloat(transaction.cost)
+  );
+  const totalExpenses = expenses.reduce(
+    (total, expense) => (total += expense),
+    0
+  );
+
+  // Calculate balance
+  const balance = budget - totalExpenses;
+
+  // Include cost of current transaction expense
+  const newBalance = (balance - parseFloat(costValue)).toFixed(2);
+
+  if (newBalance < 0) {
+    alert('Balance cannot be negative -- Set a higher budget to continue');
+    return expenseForm.reset();
+  }
+
+  // Transaction object
   const transaction = {
     id: generateID(),
     title: formatExpenseTitle(titleValue),
     cost: formatExpenseCost(costValue),
     date: getExpenseDate(),
-    balance: calculateNewBalance(),
+    balance: newBalance,
   };
-  // Push new transaction
+
   if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
     transactions.push(transaction);
     addExpense(transaction);
-    return updateBalance();
-  } else {
-    return;
   }
 };
 
-// Update balance
-export const updateBalance = () => {
-  calculateCurrentBalance(budget, totalExpenses);
-};
-
-const expenses = transactions.map(transaction => parseFloat(transaction.cost));
-export const totalExpenses = expenses.reduce(
-  (total, expense) => (total += expense),
-  0
-);
-
+// Formatting and input validations
 const formatExpenseCost = cost => {
   cost.trim();
   cost = parseFloat(cost).toFixed(2);
@@ -151,7 +159,7 @@ const addExpense = transaction => {
   const newExpenseBalance = createNewElement(
     'li',
     'new__balance',
-    `${balanceValue}`
+    `$${balanceValue}`
   );
   newExpenseBalance.classList.add('mobile-hidden');
 
@@ -161,8 +169,8 @@ const addExpense = transaction => {
   newExpenseItem.appendChild(newExpenseCost);
   newExpenseItem.appendChild(newExpenseDate);
   newExpenseItem.appendChild(newExpenseBalance);
+
   // Reset form
-  updateBalance();
   expenseForm.reset();
 };
 

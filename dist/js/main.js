@@ -1,6 +1,5 @@
 import { newBudgetAmount, budget } from './budget.js';
 import { addTransaction, transactions } from './expenses.js';
-import { calculateCurrentBalance, balance } from './balance.js';
 import { toggleNav, closeNavBar } from './nav.js';
 import {
   operateTripsModal,
@@ -25,8 +24,6 @@ const initApp = () => {
 
     addTransaction();
     updateLocalStorage();
-    calculateCurrentBalance();
-    updateLocalBalance();
     updateValues();
   });
 
@@ -37,8 +34,6 @@ const initApp = () => {
 
     newBudgetAmount();
     updateLocalStorage();
-    calculateCurrentBalance();
-    updateLocalBalance();
     updateValues();
 
     budgetModal.close();
@@ -52,8 +47,6 @@ const initApp = () => {
 
   // Load saved content
   updateLocalStorage();
-  calculateCurrentBalance();
-  updateLocalBalance();
   updateValues();
 };
 
@@ -62,13 +55,17 @@ const updateLocalStorage = () => {
   localStorage.setItem('transactions', JSON.stringify(transactions));
 };
 
-const updateLocalBalance = () => {
-  localStorage.setItem('balance', JSON.stringify(balance));
-};
-
 const updateValues = () => {
   currentBudget.textContent = `$${budget}`;
-  currentBalance.textContent = `$${balance}`;
+  const transactionsArr = localStorage.getItem('transactions');
+  if (transactionsArr === null || JSON.parse(transactionsArr).length === 0) {
+    currentBalance.textContent = `$${budget}`;
+  } else {
+    const transactions = JSON.parse(transactionsArr);
+    currentBalance.textContent = `$${
+      transactions[transactions.length - 1].balance
+    }`;
+  }
 };
 
 document.addEventListener('DOMContentLoaded', initApp);

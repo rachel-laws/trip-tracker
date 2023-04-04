@@ -1,5 +1,7 @@
 //* Set Budget
 
+// TODO: Make balance update when budget updates
+
 const budgetForm = document.querySelector('#budgetForm');
 const setBudgetAmount = document.querySelector('#setBudgetAmount');
 const currentBudget = document.querySelector('#currentBudget');
@@ -7,6 +9,7 @@ const currentBudget = document.querySelector('#currentBudget');
 // Save to local storage
 let localStorageBudget = JSON.parse(localStorage.getItem('budget'));
 
+// Current budget value
 export let budget =
   localStorage.getItem('budget') !== null ? localStorageBudget : '0.00';
 
