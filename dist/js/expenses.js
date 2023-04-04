@@ -165,6 +165,7 @@ const addExpense = transaction => {
 
   // Add to expense container
   expenseItems.prepend(newExpenseItem);
+  newExpenseItem.setAttribute('aria-live', 'assertive');
   newExpenseItem.appendChild(newExpenseTitle);
   newExpenseItem.appendChild(newExpenseCost);
   newExpenseItem.appendChild(newExpenseDate);
