@@ -75,9 +75,70 @@
         <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
         <form id="newExpense">
           <legend>Add<span class="sr-only"> New</span> Expense</legend>
-          <fieldset>
-            <label for="setExpenseTitle"
-              >Title
+          <label class='expense__type-label'>Type</label>
+          <fieldset class="expense__type">
+            <div class="expense__type-shopping">
+              <i class="bi bi-basket"></i>
+              <label for="expenseType" class="radio-label">
+                Shopping
+                <input
+                  id="shopping"
+                  value="shopping"
+                  type="radio"
+                  name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-food">
+              <i class="bi bi-bag"></i>
+              <label for="food" class="radio-label">
+                Food
+                <input id="food" value="food" type="radio" name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-activities">
+              <i class="bi bi-bicycle"></i>
+              <label for="activities" class="radio-label">
+                Activities
+                <input
+                  id="activities"
+                  value="activities"
+                  type="radio"
+                  name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-lodging">
+              <i class="bi bi-building"></i>
+              <label for="lodging" class="radio-label">
+                Lodging
+                <input
+                  id="lodging"
+                  value="lodging"
+                  type="radio"
+                  name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-transport">
+              <i class="bi bi-car-front"></i>
+              <label for="transport" class="radio-label">
+                Transport
+                <input
+                  id="transport"
+                  value="transport"
+                  type="radio"
+                  name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-misc">
+              <i class="bi bi-plus-circle"></i>
+              <label for="misc" class="radio-label">
+                Misc.
+                <input id="misc" value="misc" type="radio" name="expenseType" />
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="expense__info">
+            <label for="setExpenseTitle">
+              Title
               <input
                 id="setExpenseTitle"
                 class="setExpenseTitle"
@@ -87,8 +148,8 @@
                 required />
             </label>
             <div class="expense__form-wrapper">
-              <label for="setExpenseCost"
-                >Cost
+              <label for="setExpenseCost">
+                Cost
                 <input
                   id="setExpenseCost"
                   class="setExpenseCost"

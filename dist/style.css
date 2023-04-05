@@ -330,36 +330,42 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  padding: 1rem 2rem 1.25rem;
+
+  background: var(--modal-bg);
+  border: var(--light-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--light-shadow);
 }
 
 .expenses legend {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--heading-text-color);
+  margin-bottom: 1rem;
 
   user-select: none;
 }
 
-.expenses form fieldset {
+.expense__info {
   display: flex;
   justify-content: space-evenly;
   background: var(--modal-bg);
   gap: 1rem;
-
-  padding: 1rem 2rem 1.25rem;
-
-  border: var(--light-border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--light-shadow);
+  border: none;
 }
 
-.expenses label {
+.expense__info label,
+.expense__type-label {
   font-weight: 600;
   text-align: center;
 }
 
-.expenses input:not([type='submit']),
+.expense__type-label {
+  margin-bottom: 0.5rem;
+}
+
+.expense__info input:not([type='submit']),
 .expenses select {
   display: block;
 
@@ -374,6 +380,58 @@ section {
   border-radius: var(--border-radius);
   background: var(--input-color);
   box-shadow: var(--shadow);
+}
+
+.expense__type {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 3px;
+  border: none;
+}
+
+.expense__type input {
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 3rem;
+  height: 3rem;
+  margin-inline: auto;
+  margin-top: 3px;
+
+  background: var(--button-bg);
+  border: 3px solid #f07178;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.expense__type div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.expense__type div i {
+  position: absolute;
+  bottom: 5px;
+
+  color: var(--btn-text-color);
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+.expense__type input:checked {
+  background: #f07178;
+  border-color: var(--text-color);
+}
+
+.radio-label {
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .setExpenseTitle {
@@ -648,12 +706,16 @@ footer a i {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .expenses fieldset {
+  .expense__info {
     align-items: center;
     flex-direction: column;
 
     gap: 0.5rem;
     padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .expense__type {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .expenses form {
