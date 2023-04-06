@@ -330,7 +330,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 2rem 1.25rem;
+  padding: 1rem 2rem 2rem;
 
   background: var(--modal-bg);
   border: var(--light-border);
@@ -385,8 +385,9 @@ section {
 .expense__type {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 3px;
+  gap: 10px 8px;
   border: none;
+  margin-bottom: 1rem;
 }
 
 .expense__type input {
@@ -396,7 +397,7 @@ section {
   width: 3rem;
   height: 3rem;
   margin-inline: auto;
-  margin-top: 3px;
+  margin-top: 2px;
 
   background: var(--button-bg);
   border: 3px solid #f07178;
@@ -425,7 +426,8 @@ section {
 
 .expense__type input:checked {
   background: #f07178;
-  border-color: var(--text-color);
+  background: var(--fill-bg);
+  border-color: var(--button-bg);
 }
 
 .radio-label {
@@ -435,7 +437,7 @@ section {
 }
 
 .setExpenseTitle {
-  width: 11rem;
+  width: 11.5rem;
 }
 
 .expense__form-wrapper {
@@ -444,11 +446,11 @@ section {
 }
 
 .setExpenseCost {
-  width: 5rem;
+  width: 5.25rem;
 }
 
 .expenses select {
-  width: 5rem;
+  width: 5.25rem;
 }
 
 .expenses input[type='submit'] {
@@ -706,6 +708,10 @@ footer a i {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  .expense form {
+    padding: 1rem 2rem 1rem;
+  }
+
   .expense__info {
     align-items: center;
     flex-direction: column;
@@ -716,10 +722,9 @@ footer a i {
 
   .expense__type {
     grid-template-columns: 1fr 1fr 1fr;
-  }
+    gap: 10px 5px;
 
-  .expenses form {
-    width: 90%;
+    margin-bottom: 0;
   }
 
   .expenses input[type='submit'] {
