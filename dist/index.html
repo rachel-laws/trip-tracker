@@ -18,27 +18,25 @@
   </head>
   <body>
     <header>
-      <div class="title">
-        <img src="/assets/logo.svg" alt="TripTracker" />
-      </div>
-      <nav id="navBar" class="nav__hidden">
-        <button id="viewTripsBtn" aria-controls="tripsModal">
+      <img src="/assets/logo.svg" alt="TripTracker" />
+      <nav id="navigation" class="nav__hidden">
+        <button id="nav__btn-trips" aria-controls="tripsModal">
           <span class="sr-only">Open </span>
           <i class="bi bi-airplane"></i>Trips
         </button>
-        <button id="changeBudgetBtn" aria-controls="budgetModal">
+        <button id="nav__btn-budget" aria-controls="budgetModal">
           <i class="bi bi-cash-stack"></i> Budget
           <span class="sr-only"> Settings</span>
         </button>
-        <button id="changeCurrencyBtn" aria-controls="currencyModal">
+        <button id="nav__btn-currency" aria-controls="currency__modal">
           <i class="bi bi-coin"></i> Currency
           <span class="sr-only"> Settings</span>
         </button>
       </nav>
       <button
         id="toggleMobileNav"
-        class="toggleMobileNav"
-        aria-controls="navBar"
+        class="nav__toggle--mobile"
+        aria-controls="navigation"
         aria-expanded="false">
         <i id="navIcon" class="bi bi-list"></i>
         <span class="sr-only">Toggle navigation menu</span>
@@ -47,8 +45,8 @@
     <main>
       <a href="#budget" class="sr-only">Skip to Budget and Balance</a>
       <a href="#expenses" class="sr-only">Skip to Expenses</a>
-      <section id="budget" class="budget">
-        <div class="budget__current">
+      <section id="amounts" class="amounts">
+        <div class="budget__container">
           <h1 id="budget__heading">
             <span class="mobile-hidden">Your </span>Budget
           </h1>
@@ -59,7 +57,7 @@
             ~
           </p>
         </div>
-        <div class="balance__current">
+        <div class="balance__container">
           <h1 id="balance__heading">
             <span class="mobile-hidden">Current </span>Balance
           </h1>
@@ -75,7 +73,7 @@
         <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
         <form id="newExpense">
           <legend>Add<span class="sr-only"> New</span> Expense</legend>
-          <label class='expense__type-label'>Type</label>
+          <label class="expense__type-label">Type</label>
           <fieldset class="expense__type">
             <div class="expense__type-shopping">
               <i class="bi bi-basket"></i>
@@ -83,6 +81,7 @@
                 Shopping
                 <input
                   id="shopping"
+                  class="expense__type-btn"
                   value="shopping"
                   type="radio"
                   name="expenseType" />
@@ -92,7 +91,12 @@
               <i class="bi bi-bag"></i>
               <label for="food" class="radio-label">
                 Food
-                <input id="food" value="food" type="radio" name="expenseType" />
+                <input
+                  id="food"
+                  class="expense__type-btn"
+                  value="food"
+                  type="radio"
+                  name="expenseType" />
               </label>
             </div>
             <div class="expense__type-activities">
@@ -101,6 +105,7 @@
                 Activities
                 <input
                   id="activities"
+                  class="expense__type-btn"
                   value="activities"
                   type="radio"
                   name="expenseType" />
@@ -112,6 +117,7 @@
                 Lodging
                 <input
                   id="lodging"
+                  class="expense__type-btn"
                   value="lodging"
                   type="radio"
                   name="expenseType" />
@@ -123,6 +129,7 @@
                 Transport
                 <input
                   id="transport"
+                  class="expense__type-btn"
                   value="transport"
                   type="radio"
                   name="expenseType" />
@@ -132,7 +139,12 @@
               <i class="bi bi-plus-circle"></i>
               <label for="misc" class="radio-label">
                 Misc.
-                <input id="misc" value="misc" type="radio" name="expenseType" />
+                <input
+                  id="misc"
+                  class="expense__type-btn"
+                  value="misc"
+                  type="radio"
+                  name="expenseType" />
               </label>
             </div>
           </fieldset>
@@ -141,7 +153,7 @@
               Title
               <input
                 id="setExpenseTitle"
-                class="setExpenseTitle"
+                class="expense__title-input"
                 type="text"
                 name="setExpenseTitle"
                 placeholder="Enter Expense Title"
@@ -152,7 +164,7 @@
                 Cost
                 <input
                   id="setExpenseCost"
-                  class="setExpenseCost"
+                  class="expense__cost-input"
                   type="text"
                   name="setExpenseCost"
                   placeholder="$0.00"
@@ -172,22 +184,23 @@
         </form>
         <div class="expense__container">
           <h1 class="expense__heading">Expenses</h1>
-          <ul class="expense__categories">
+          <ul class="expense__subheadings">
             <li>Title</li>
             <li>Cost</li>
             <li>Date</li>
             <li class="mobile-hidden">Balance</li>
           </ul>
+          <div id="deleteBtnContainer"></div>
           <div id="expenseItems" class="expense__items"></div>
         </div>
       </section>
       <!-- View Trips -->
-      <dialog id="tripsModal" class="tripsModal modal">
+      <dialog id="tripsModal" class="trips__modal modal">
         <button
           aria-controls="tripsModal"
           aria-modal="true"
           id="closeTripsModal"
-          class="closeModal">
+          class="modal__close">
           <i class="bi bi-x-lg"></i>
           <span class="sr-only">Trips</span>
         </button>
@@ -195,28 +208,34 @@
         <div class="trips__container"></div>
       </dialog>
       <!-- Change Currency -->
-      <dialog id="currencyModal" class="currencyModal modal" aria-modal="true">
+      <dialog
+        id="currencyModal"
+        class="currency__modal modal"
+        aria-modal="true">
         <button
           id="closeCurrencyModal"
           aria-controls="currencyModal"
-          class="closeModal">
+          class="modal__close">
           <i class="bi bi-x-lg"></i>
           <span class="sr-only">Close currency settings</span>
         </button>
         <p class="currency__title">Current Currency</p>
-        <div class="currency__current">
+        <div class="currency__container">
           <img id="currency__img" src="/assets/us-flag.svg" alt="USA Flag" />
-          <p id="currentCurrency" class="currentCurrency" aria-live="assertive">
+          <p
+            id="currentCurrency"
+            class="currency__current"
+            aria-live="assertive">
             USD
           </p>
         </div>
-        <form>
+        <form id='currencyForm'>
           <label for="changeCurrency"
             >Change<span class="sr-only"> Default</span> Currency
           </label>
           <select
             id="changeCurrency"
-            class="changeCurrency"
+            class="currency__select"
             name="changeCurrency"
             required>
             <option id="USD" value="">USD</option>
@@ -233,11 +252,11 @@
         </form>
       </dialog>
       <!-- Change Budget -->
-      <dialog id="budgetModal" class="budgetModal modal" aria-modal="true">
+      <dialog id="budgetModal" class="budget__modal modal" aria-modal="true">
         <button
           id="closeBudgetModal"
           aria-controls="budgetModal"
-          class="closeModal">
+          class="modal__close">
           <i class="bi bi-x-lg"></i>
           <span class="sr-only">Close budget settings</span>
         </button>
