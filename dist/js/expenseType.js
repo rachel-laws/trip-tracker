@@ -4,6 +4,7 @@ const filterBtn = document.querySelector('#expenseFilterBtn');
 const filterSelect = document.querySelector('#expenseFilterSelect');
 const expenseItems = document.querySelectorAll('.expense__item');
 
+// Toggle filter options
 export const toggleElement = (element, button) => {
   if (element.classList.contains('hidden')) {
     element.classList.remove('hidden');
@@ -16,30 +17,39 @@ export const toggleElement = (element, button) => {
   }
 };
 
+// Filter expenses
 export const filterExpenses = () => {
   const selectedValue = filterSelect.value;
+  // No filter --> Show all
   if (selectedValue === 'none') {
     expenseItems.forEach(expenseItem => {
       if (expenseItem.classList.contains('hidden')) {
-        expenseItem.classList.remove('hidden');
-        expenseItem.classList.add('visible__flex');
-        expenseItem.setAttribute('aria-hidden', 'false');
+        showExpense(expenseItem);
       }
     });
   } else {
+    // Filter by expense type
     expenseItems.forEach(expenseItem => {
       if (expenseItem.classList.contains(selectedValue)) {
-        expenseItem.classList.remove('hidden');
-        expenseItem.classList.add('visible__flex');
-        expenseItem.setAttribute('aria-hidden', 'false');
+        showExpense(expenseItem);
       } else {
-        expenseItem.classList.remove('visible__flex');
-        expenseItem.classList.add('hidden');
-        expenseItem.setAttribute('aria-hidden', 'true');
+        hideExpense(expenseItem);
       }
     });
-  }
+  } // Hide filter options
   if (filterContainer.classList.contains('visible__block')) {
     toggleElement(filterContainer, filterBtn);
   }
+};
+
+const showExpense = expense => {
+  expense.classList.remove('hidden');
+  expense.classList.add('visible__flex');
+  expense.setAttribute('aria-hidden', 'false');
+};
+
+const hideExpense = expense => {
+  expense.classList.remove('visible__flex');
+  expense.classList.add('hidden');
+  expense.setAttribute('aria-hidden', 'true');
 };
