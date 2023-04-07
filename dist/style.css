@@ -154,6 +154,10 @@ nav {
   gap: 1rem;
 }
 
+.nav__visible {
+  display: block;
+}
+
 nav button {
   position: relative;
   z-index: 1;
@@ -302,7 +306,7 @@ section {
 
 /** Add Expense Form */
 
-.expenses form {
+.expense__form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -314,7 +318,7 @@ section {
   box-shadow: var(--light-shadow);
 }
 
-.expenses legend {
+.expense__form legend {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--heading-text-color);
@@ -345,10 +349,6 @@ section {
 .expenses select {
   display: block;
 
-  height: 1.7rem;
-  margin-top: 8px;
-  padding: 0.25rem 0.5rem;
-
   font-size: 0.9rem;
   color: var(--text-color);
 
@@ -357,6 +357,13 @@ section {
 
   background: var(--input-color);
   box-shadow: var(--shadow);
+}
+
+.expense__form select,
+.expense__info input:not([type='submit']) {
+  height: 1.7rem;
+  margin-top: 8px;
+  padding: 0.25rem 0.5rem;
 }
 
 .expense__type {
@@ -425,11 +432,11 @@ section {
   width: 5.25rem;
 }
 
-.expenses select {
+.expense__form select {
   width: 5.25rem;
 }
 
-.expenses input[type='submit'] {
+.expense__form .submit {
   align-self: end;
 
   height: 1.7rem;
@@ -460,15 +467,41 @@ section {
 }
 
 .expense__subheadings {
+  position: relative;
+  margin-bottom: 0.9rem;
+
+  color: var(--subheading-text-color);
   font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.9rem;
-  color: var(--subheading-text-color);
 
   border-bottom: 1px solid var(--subheading-text-color);
   box-shadow: 0px 7px 6px -6px var(--shadow-color);
 
   user-select: none;
+}
+
+.expense__filter-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  color: var(--subheading-text-color);
+  font-size: 1.2rem;
+
+  background: none;
+  border: none;
+}
+
+.expense__filter-container {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+}
+
+.expense__filter-container select {
+  margin-top: 2px;
+  padding: 2px;
+  width: min-content;
 }
 
 .expense__items {
@@ -488,7 +521,7 @@ section {
 
 .expense__controls {
   position: absolute;
-  right: -3px;
+  left: -3px;
   bottom: 0;
   background: transparent;
   border: none;
@@ -496,7 +529,7 @@ section {
 
 .expense__controls i {
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--subheading-text-color);
 }
 
 /* Modals */
@@ -668,6 +701,18 @@ footer a i {
   margin-right: 2px;
 }
 
+.visible-flex {
+  display: flex;
+}
+
+.visible-block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Accessibility */
 
 .sr-only {
@@ -699,13 +744,12 @@ footer a i {
     background: var(--body-bg);
   }
 
-  .nav__toggle--mobile,
-  .nav__visible {
-    display: block;
-  }
-
   .nav__hidden {
     display: none;
+  }
+
+  .nav__toggle--mobile {
+    display: block;
   }
 
   nav button {
@@ -717,7 +761,7 @@ footer a i {
   }
 
   section {
-    padding: 1rem 0;
+    padding: 0 0 2rem;
   }
 
   .expense__subheadings,

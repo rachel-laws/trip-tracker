@@ -1,5 +1,6 @@
 import { newBudgetAmount, budget } from './budget.js';
 import { addTransaction, transactions } from './expenses.js';
+import { toggleElement, filterExpenses } from './expenseType.js';
 import { toggleNav, closeNavBar } from './nav.js';
 import {
   operateTripsModal,
@@ -11,10 +12,13 @@ const expenseForm = document.querySelector('#newExpense');
 const currentBudget = document.querySelector('#currentBudget');
 const currentBalance = document.querySelector('#currentBalance');
 const budgetForm = document.querySelector('#budgetForm');
+const filterContainer = document.querySelector('#expenseFilterContainer');
+const filterBtn = document.querySelector('#expenseFilterBtn');
+const filterSelect = document.querySelector('#expenseFilterSelect');
 
 const initApp = () => {
   // Mobile Navigation
-  toggleMobileNav.addEventListener('click', event => {
+  toggleMobileNav.addEventListener('click', () => {
     toggleNav();
   });
 
@@ -26,6 +30,12 @@ const initApp = () => {
     updateLocalStorage();
     updateValues();
   });
+
+  filterBtn.addEventListener('click', () => {
+    toggleElement(filterContainer, filterBtn);
+  });
+
+  filterSelect.addEventListener('change', filterExpenses);
 
   // New budget
   budgetForm.addEventListener('submit', event => {

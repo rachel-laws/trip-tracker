@@ -152,6 +152,7 @@ const addExpense = transaction => {
 
   const newExpenseItem = createNewElement('ul', 'expense__item');
   newExpenseItem.classList.add(`${expenseType}`);
+  newExpenseItem.classList.add('visible__flex');
 
   const newExpenseTitle = createNewElement(
     'li',
@@ -176,6 +177,7 @@ const addExpense = transaction => {
   newExpenseBalance.classList.add('mobile-hidden');
 
   const expenseControls = createNewElement('button', 'expense__controls');
+  expenseControls.title = 'Options';
 
   const expenseControlsIcon = createNewElement('i', 'bi');
   expenseControlsIcon.classList.add('bi-three-dots-vertical');

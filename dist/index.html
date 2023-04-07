@@ -71,7 +71,7 @@
       </section>
       <section id="expenses" class="expenses">
         <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
-        <form id="newExpense">
+        <form id="newExpense" class="expense__form">
           <legend>Add<span class="sr-only"> New</span> Expense</legend>
           <label class="expense__type-label">Type</label>
           <fieldset class="expense__type">
@@ -189,6 +189,31 @@
             <li>Cost</li>
             <li>Date</li>
             <li class="mobile-hidden">Balance</li>
+            <button
+              id="expenseFilterBtn"
+              class="expense__filter-btn"
+              title="Filter"
+              aria-controls="expenseFilterContainer"
+              aria-expanded="false">
+              <i class="bi bi-funnel-fill"></i>
+            </button>
+            <div
+              id="expenseFilterContainer"
+              class="hidden expense__filter-container">
+              <label for="expenseFilterSelect">Filter By</label>
+              <select
+                id="expenseFilterSelect"
+                class="expense__filter-select"
+                name="expenseFilterSelect">
+                <option value="none">None</option>
+                <option value="shopping">Shopping</option>
+                <option value="food">Food</option>
+                <option value="activities">Activities</option>
+                <option value="lodging">Lodging</option>
+                <option value="transport">Transport</option>
+                <option value="misc">Misc.</option>
+              </select>
+            </div>
           </ul>
           <div id="deleteBtnContainer"></div>
           <div id="expenseItems" class="expense__items"></div>
@@ -229,7 +254,7 @@
             USD
           </p>
         </div>
-        <form id='currencyForm'>
+        <form id="currencyForm">
           <label for="changeCurrency"
             >Change<span class="sr-only"> Default</span> Currency
           </label>
