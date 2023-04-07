@@ -30,6 +30,15 @@ const getExpenseDate = () => {
   return `${currentMonth + 1}/${currentDay}/${currentYear}`;
 };
 
+const getExpenseType = () => {
+  const selectedExpenseType = document.querySelector(
+    'input[name = "expenseType"]:checked'
+  );
+
+  const type = selectedExpenseType.id;
+  return type;
+};
+
 // Generate random ID
 const generateID = () => {
   return Math.floor(Math.random() * 1000000000);
@@ -76,6 +85,7 @@ export const addTransaction = () => {
     cost: formatExpenseCost(costValue),
     date: getExpenseDate(),
     balance: newBalance,
+    type: getExpenseType(),
   };
 
   if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
@@ -134,12 +144,14 @@ const validateExpenseCost = cost => {
 
 // New expense
 const addExpense = transaction => {
+  const expenseType = transaction.type;
   const titleValue = transaction.title;
   const costValue = transaction.cost;
   const dateValue = transaction.date;
   const balanceValue = transaction.balance;
 
   const newExpenseItem = createNewElement('ul', 'expense__item');
+  newExpenseItem.classList.add(`${expenseType}`);
 
   const newExpenseTitle = createNewElement(
     'li',
@@ -163,6 +175,11 @@ const addExpense = transaction => {
   );
   newExpenseBalance.classList.add('mobile-hidden');
 
+  const expenseControls = createNewElement('button', 'expense__controls');
+
+  const expenseControlsIcon = createNewElement('i', 'bi');
+  expenseControlsIcon.classList.add('bi-three-dots-vertical');
+
   // Add to expense container
   expenseItems.prepend(newExpenseItem);
   newExpenseItem.setAttribute('aria-live', 'assertive');
@@ -170,6 +187,8 @@ const addExpense = transaction => {
   newExpenseItem.appendChild(newExpenseCost);
   newExpenseItem.appendChild(newExpenseDate);
   newExpenseItem.appendChild(newExpenseBalance);
+  newExpenseItem.appendChild(expenseControls);
+  expenseControls.appendChild(expenseControlsIcon);
 
   // Reset form
   expenseForm.reset();
