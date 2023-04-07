@@ -11,7 +11,9 @@ const openModal = (modalBtn, modal) => {
 const closeModal = (modalBtn, modal, form) => {
   modalBtn.addEventListener('click', () => {
     modal.close();
-    form.reset();
+    if (form) {
+      form.reset();
+    }
   });
 };
 
@@ -20,7 +22,7 @@ const closeModal = (modalBtn, modal, form) => {
 // Trips Modal
 export const operateTripsModal = () => {
   const tripsModal = document.querySelector('#tripsModal');
-  const openTripsModal = document.querySelector('#viewTripsBtn');
+  const openTripsModal = document.querySelector('#nav__btn-trips');
   const closeTripsModal = document.querySelector('#closeTripsModal');
 
   openModal(openTripsModal, tripsModal);
@@ -30,17 +32,18 @@ export const operateTripsModal = () => {
 // Currency Modal
 export const operateCurrencyModal = () => {
   const currencyModal = document.querySelector('#currencyModal');
-  const openCurrencyModal = document.querySelector('#changeCurrencyBtn');
+  const openCurrencyModal = document.querySelector('#nav__btn-currency');
   const closeCurrencyModal = document.querySelector('#closeCurrencyModal');
+  const currencyForm = document.querySelector('#currencyForm');
 
   openModal(openCurrencyModal, currencyModal);
-  closeModal(closeCurrencyModal, currencyModal);
+  closeModal(closeCurrencyModal, currencyModal, currencyForm);
 };
 
 // Budget Modal
 export const operateBudgetModal = () => {
   const budgetModal = document.querySelector('#budgetModal');
-  const openBudgetModal = document.querySelector('#changeBudgetBtn');
+  const openBudgetModal = document.querySelector('#nav__btn-budget');
   const closeBudgetModal = document.querySelector('#closeBudgetModal');
   const budgetForm = document.querySelector('#budgetForm');
 
