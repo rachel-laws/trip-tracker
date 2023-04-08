@@ -1,5 +1,5 @@
 import { newBudgetAmount, budget } from './budget.js';
-import { addTransaction, transactions } from './expenses.js';
+import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseType.js';
 import { toggleNav, closeNavBar } from './nav.js';
 import {
@@ -11,6 +11,7 @@ import {
 const expenseForm = document.querySelector('#newExpense');
 const currentBudget = document.querySelector('#currentBudget');
 const currentBalance = document.querySelector('#currentBalance');
+const setExpenseCost = document.querySelector('#setExpenseCost');
 const budgetForm = document.querySelector('#budgetForm');
 const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterBtn = document.querySelector('#expenseFilterBtn');
@@ -28,7 +29,6 @@ const initApp = () => {
 
     addTransaction();
     updateLocalStorage();
-    updateValues();
   });
 
   filterBtn.addEventListener('click', () => {
@@ -71,10 +71,14 @@ const updateValues = () => {
   if (transactionsArr === null || JSON.parse(transactionsArr).length === 0) {
     currentBalance.textContent = `$${budget}`;
   } else {
-    const transactions = JSON.parse(transactionsArr);
-    currentBalance.textContent = `$${
-      transactions[transactions.length - 1].balance
-    }`;
+    // const transactions = JSON.parse(transactionsArr);
+    let costValue = setExpenseCost.value;
+    let balance = parseFloat(budget) - parseFloat(totalExpenses);
+    if (costValue) {
+      balance = balance - parseFloat(costValue);
+    }
+    balance = balance.toFixed(2);
+    currentBalance.textContent = `$${balance}`;
   }
 };
 

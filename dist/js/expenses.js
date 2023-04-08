@@ -53,21 +53,37 @@ export const localStorageTransactions = JSON.parse(
 export const transactions =
   localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
+// Calculate total expenses
+const expenses = transactions.map(transaction => parseFloat(transaction.cost));
+export const totalExpenses = expenses.reduce(
+  (total, expense) => (total += expense),
+  0
+);
+
 // New transaction
 export const addTransaction = () => {
   let titleValue = setExpenseTitle.value;
   let costValue = setExpenseCost.value;
 
-  // Calculate total expenses
-  const expenses = transactions.map(transaction =>
-    parseFloat(transaction.cost)
-  );
-  const totalExpenses = expenses.reduce(
-    (total, expense) => (total += expense),
-    0
-  );
+  // Transaction object
+  const transaction = {
+    id: generateID(),
+    title: formatExpenseTitle(titleValue),
+    cost: formatExpenseCost(costValue),
+    date: getExpenseDate(),
+    balance: calculateNewBalance(),
+    type: getExpenseType(),
+  };
 
+  if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
+    transactions.push(transaction);
+    addExpense(transaction);
+  }
+};
+
+const calculateNewBalance = () => {
   // Calculate balance
+  let costValue = setExpenseCost.value;
   const balance = budget - totalExpenses;
 
   // Include cost of current transaction expense
@@ -76,21 +92,9 @@ export const addTransaction = () => {
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
     return expenseForm.reset();
-  }
-
-  // Transaction object
-  const transaction = {
-    id: generateID(),
-    title: formatExpenseTitle(titleValue),
-    cost: formatExpenseCost(costValue),
-    date: getExpenseDate(),
-    balance: newBalance,
-    type: getExpenseType(),
-  };
-
-  if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
-    transactions.push(transaction);
-    addExpense(transaction);
+  } else {
+    currentBalance.textContent = `$${newBalance}`;
+    return newBalance;
   }
 };
 
