@@ -84,10 +84,11 @@ export const addTransaction = () => {
 const calculateNewBalance = () => {
   // Calculate balance
   let costValue = setExpenseCost.value;
-  const balance = budget - totalExpenses;
+  costValue = parseFloat(costValue);
+  const balance = budget - totalExpenses - costValue;
 
   // Include cost of current transaction expense
-  const newBalance = (balance - parseFloat(costValue)).toFixed(2);
+  const newBalance = balance.toFixed(2);
 
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
