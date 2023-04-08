@@ -160,7 +160,7 @@ nav {
 
 nav button {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   width: 8.5rem;
   padding: 0.35rem 0.5rem;
@@ -168,10 +168,10 @@ nav button {
   font-size: 1.1rem;
   color: var(--btn-text-color);
   border: 1px solid var(--text-color);
-  background: var(--button-bg);
+  background: var(--alt-fill-bg);
   box-shadow: var(--shadow);
 
-  transition: 100ms ease;
+  transition: 150ms ease;
 }
 
 nav button i {
@@ -180,7 +180,7 @@ nav button i {
 
 nav button:hover,
 nav button:focus-visible {
-  border-color: var(--text-color);
+  box-shadow: var(--shadow), 2px 2px 4px #862c388b;
 }
 
 nav button:active {
@@ -201,22 +201,6 @@ nav button::before {
   background: var(--btn-text-color);
 
   transition: 250ms ease;
-}
-
-@keyframes roundToFit {
-  0% {
-    border-radius: 50% 50% 50% 1px;
-  }
-  100% {
-    border-radius: 1px;
-  }
-}
-
-nav button:hover::after,
-nav button:focus-visible::after {
-  width: 100%;
-  height: 100%;
-  animation: roundToFit 250ms ease 1;
 }
 
 nav button:hover::before,
@@ -369,7 +353,7 @@ section {
 .expense__type {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px 8px;
+  gap: 10px 14px;
   border: none;
   margin-bottom: 1rem;
 }
@@ -378,16 +362,18 @@ section {
   -webkit-appearance: none;
   appearance: none;
 
-  width: 3rem;
-  height: 3rem;
+  width: 3.2rem;
+  height: 3.2rem;
   margin-inline: auto;
-  margin-top: 2px;
+  margin-top: 5px;
 
-  background: var(--button-bg);
-  border: 3px solid #f07178;
-  border-radius: 5px;
+  background: var(--input-color);
+  border: 1px solid var(--heading-text-color);
+  box-shadow: var(--shadow);
+  border-radius: 50%;
 
   cursor: pointer;
+  transition: 150ms ease;
 }
 
 .expense__type div {
@@ -398,23 +384,29 @@ section {
   width: 100%;
 }
 
-.expense__type div i {
+.expense__type i {
   position: absolute;
-  bottom: 5px;
+  bottom: 6.5px;
+  z-index: 3;
 
-  color: var(--btn-text-color);
-  font-size: 2rem;
+  color: var(--heading-text-color);
+  font-size: 1.9rem;
   pointer-events: none;
 }
 
+.expense__type input:hover,
+.expense__type input:focus-visible {
+  transform: scale(1.15);
+  border-color: var(--heading-text-color);
+}
+
 .expense__type input:checked {
-  background: #f07178;
-  background: var(--fill-bg);
+  border-width: 4px;
   border-color: var(--button-bg);
 }
 
 .radio-label {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
 }
@@ -776,7 +768,7 @@ footer a i {
 
   .expense__type {
     gap: 10px 5px;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
   }
 
   .expense__info {

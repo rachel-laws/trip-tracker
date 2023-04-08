@@ -12,6 +12,9 @@
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg" />
     <title>TripTrackr</title>
@@ -79,7 +82,7 @@
           <label class="expense__type-label">Type</label>
           <fieldset class="expense__type">
             <div class="expense__type-shopping">
-              <i class="bi bi-basket"></i>
+              <i class="bi bi-cart3"></i>
               <label for="expenseType" class="radio-label">
                 Shopping
                 <input
@@ -91,7 +94,7 @@
               </label>
             </div>
             <div class="expense__type-food">
-              <i class="bi bi-bag"></i>
+              <i class="bi bi-cup-hot"></i>
               <label for="food" class="radio-label">
                 Food
                 <input
@@ -103,7 +106,7 @@
               </label>
             </div>
             <div class="expense__type-activities">
-              <i class="bi bi-bicycle"></i>
+              <i class="bi bi-binoculars"></i>
               <label for="activities" class="radio-label">
                 Activities
                 <input
@@ -114,26 +117,26 @@
                   name="expenseType" />
               </label>
             </div>
-            <div class="expense__type-lodging">
-              <i class="bi bi-building"></i>
-              <label for="lodging" class="radio-label">
-                Lodging
-                <input
-                  id="lodging"
-                  class="expense__type-btn"
-                  value="lodging"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
             <div class="expense__type-transport">
-              <i class="bi bi-car-front"></i>
+              <i class="bi bi-bus-front"></i>
               <label for="transport" class="radio-label">
                 Transport
                 <input
                   id="transport"
                   class="expense__type-btn"
                   value="transport"
+                  type="radio"
+                  name="expenseType" />
+              </label>
+            </div>
+            <div class="expense__type-lodging">
+              <i class="bi bi-buildings"></i>
+              <label for="lodging" class="radio-label">
+                Lodging
+                <input
+                  id="lodging"
+                  class="expense__type-btn"
+                  value="lodging"
                   type="radio"
                   name="expenseType" />
               </label>
@@ -198,7 +201,7 @@
               title="Filter"
               aria-controls="expenseFilterContainer"
               aria-expanded="false">
-              <i class="bi bi-funnel-fill"></i>
+              <i class="fa-solid fa-filter"></i>
             </button>
             <div
               id="expenseFilterContainer"
