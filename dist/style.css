@@ -482,6 +482,18 @@ section {
 
   background: none;
   border: none;
+
+  transition: 100ms ease;
+}
+
+.expense__filter-btn:hover,
+.expense__filter-btn:focus-visible {
+  color: #b53636;
+  transform: scale(1.1);
+}
+
+.expense__filter-btn:active {
+  color: var(--subheading-text-color);
 }
 
 .expense__filter-container {
@@ -511,7 +523,7 @@ section {
   box-shadow: var(--light-shadow);
 }
 
-.expense__controls {
+.expense__controls-btn {
   position: absolute;
   left: -3px;
   bottom: 0;
@@ -519,9 +531,74 @@ section {
   border: none;
 }
 
-.expense__controls i {
+.expense__controls-btn i {
   font-size: 1.5rem;
   color: var(--subheading-text-color);
+}
+
+.expense__controls-options {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.expense__controls {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  gap: 3px;
+
+  width: 3.7rem;
+  padding: 2px;
+
+  background: var(--subheading-text-color);
+  border-radius: var(--border-radius);
+}
+
+.expense__controls:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+
+  width: 0;
+  height: 0;
+
+  border-bottom: 18px solid transparent;
+  border-left: 18px solid var(--subheading-text-color);
+}
+
+.expense__controls-delete,
+.expense__controls-edit {
+  z-index: 6;
+  padding: 0.15rem 0.25rem;
+
+  font-size: 1.2rem;
+  color: var(--heading-text-color);
+
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--expense-bg);
+
+  transition: 150ms ease;
+}
+
+.expense__controls-delete:hover,
+.expense__controls-delete:focus-visible {
+  color: rgb(221, 16, 16);
+  background: var(--input-color);
+}
+
+.expense__controls-edit:hover,
+.expense__controls-edit:focus-visible {
+  color: #b53636;
+  background: var(--input-color);
+}
+
+.expense__controls-delete:active,
+.expense__controls-edit:active {
+  color: var(--heading-text-color);
 }
 
 /* Modals */

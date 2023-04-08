@@ -94,9 +94,12 @@ const calculateNewBalance = () => {
   costValue = parseFloat(costValue);
   const newBalance = (balance - costValue).toFixed(2);
 
+  // Err if new balance less than 0
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
     return expenseForm.reset();
+
+    // Update balance
   } else {
     currentBalance.textContent = `$${newBalance}`;
     return newBalance;
@@ -117,10 +120,12 @@ const formatExpenseTitle = title => {
 
 const validateExpenseTitle = title => {
   title = title.trim();
+
   // Err if input is empty
   if (title === '') {
     alert('Expense title and cost are both required');
     return expenseForm.reset();
+
     // Err if title is more than 12 chars
   } else if (title.length > 12) {
     alert('Title must be less than 12 characters');
@@ -132,18 +137,23 @@ const validateExpenseTitle = title => {
 const validateExpenseCost = cost => {
   cost = cost.trim();
   const regex = /\d/g;
+
   // Err if input is empty
   if (cost === '') {
     alert('Expense title and cost are both required');
     return expenseForm.reset();
+
     // Err if cost isn't digits
   } else if (!regex.test(cost)) {
     alert('Cost must be digits only');
     return expenseForm.reset();
+
     // Cost --> Number
   } else {
     cost = parseInt(cost);
-  } // Err if cost is less than 0 or greater than 10,000
+  }
+
+  // Err if cost is less than 0 or greater than 10,000
   if (cost < 0 || cost >= 10000) {
     alert('Expense must be above 0 and less than 10,000');
     return expenseForm.reset();
@@ -153,16 +163,19 @@ const validateExpenseCost = cost => {
 
 // Add expense to DOM
 const addExpense = transaction => {
+  const expenseID = transaction.id;
   const expenseType = transaction.type;
   const titleValue = transaction.title;
   const costValue = transaction.cost;
   const dateValue = transaction.date;
   const balanceValue = transaction.balance;
 
+  // Expense item
   const newExpenseItem = createNewElement('ul', 'expense__item');
   newExpenseItem.classList.add(`${expenseType}`);
   newExpenseItem.classList.add('visible__flex');
 
+  // Title / Cost / Date / Balance
   const newExpenseTitle = createNewElement(
     'li',
     'expense__title',
@@ -185,21 +198,68 @@ const addExpense = transaction => {
   );
   newExpenseBalance.classList.add('mobile-hidden');
 
-  const expenseControls = createNewElement('button', 'expense__controls');
-  expenseControls.title = 'Options';
+  // Expense controls
+  const expenseControlsContainer = createNewElement(
+    'div',
+    'expense__controls-container'
+  );
 
+  // Show controls button
+  const expenseControlsBtn = createNewElement(
+    'button',
+    'expense__controls-btn'
+  );
+  expenseControlsBtn.title = 'Options';
+  expenseControlsBtn.id = expenseID;
+  // Icon
   const expenseControlsIcon = createNewElement('i', 'bi');
   expenseControlsIcon.classList.add('bi-three-dots-vertical');
+  expenseControlsBtn.appendChild(expenseControlsIcon);
 
-  // Add to expense container
+  // To show/hide expenseControls
+  const expenseControlsOptions = createNewElement(
+    'div',
+    'expense__controls-options'
+  );
+
+  // Container for edit/delete buttons
+  const expenseControls = createNewElement('div', 'expense__controls');
+
+  // Edit button
+  const expenseEdit = createNewElement('button', 'expense__controls-edit');
+  expenseEdit.title = 'Edit';
+  expenseEdit.id = 'editExpenseBtn';
+  // Icon
+  const expenseEditIcon = createNewElement('i', 'fa-solid');
+  expenseEditIcon.classList.add('fa-pencil');
+  expenseEdit.appendChild(expenseEditIcon);
+
+  // Delete button
+  const expenseDelete = createNewElement('button', 'expense__controls-delete');
+  expenseDelete.title = 'Delete';
+  expenseDelete.id = 'deleteExpenseBtn';
+  // Icon
+  const expenseDeleteIcon = createNewElement('i', 'fa-solid');
+  expenseDeleteIcon.classList.add('fa-trash-can');
+  expenseDelete.appendChild(expenseDeleteIcon);
+
+  // Add to DOM
   expenseItems.prepend(newExpenseItem);
   newExpenseItem.setAttribute('aria-live', 'assertive');
+
+  // Expense data
   newExpenseItem.appendChild(newExpenseTitle);
   newExpenseItem.appendChild(newExpenseCost);
   newExpenseItem.appendChild(newExpenseDate);
   newExpenseItem.appendChild(newExpenseBalance);
-  newExpenseItem.appendChild(expenseControls);
-  expenseControls.appendChild(expenseControlsIcon);
+
+  newExpenseItem.appendChild(expenseControlsContainer);
+  expenseControlsContainer.appendChild(expenseControlsBtn);
+
+  newExpenseItem.appendChild(expenseControlsOptions);
+  expenseControlsOptions.appendChild(expenseControls);
+  expenseControls.appendChild(expenseEdit);
+  expenseControls.appendChild(expenseDelete);
 
   // Reset form
   expenseForm.reset();
