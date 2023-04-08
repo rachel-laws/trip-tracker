@@ -1,12 +1,8 @@
 import { createNewElement } from './expenses.js';
 
-const expenseItem = document.querySelector('.expense__item');
-const controlsBtn = document.querySelectorAll('.expense__controls-btn');
 const expenseTitle = document.querySelector('.expense__title');
 
-const editBtn = document.querySelector('#editExpenseBtn');
-
-//* Create expense control options (Edit/Delete)
+//* Create expense control options
 
 export const createControls = event => {
   const button = event.target;
@@ -71,21 +67,25 @@ export const createControls = event => {
   //   });
 };
 
-// Delete expense
+//* Delete expenses
+
 export const deleteExpense = deleteBtn => {
   const transactions = JSON.parse(localStorage.getItem('transactions'));
+  // Get selected expense item
   let expenseItem = deleteBtn.parentElement;
   while (!expenseItem.classList.contains('expense__item')) {
     expenseItem = expenseItem.parentElement;
   }
+  // Delete expense by ID
   const id = parseFloat(expenseItem.id);
   const filteredTransactions = transactions.filter(transaction => {
     return transaction.id !== id;
   });
 
+  // Update localStorage
   localStorage.setItem('transactions', JSON.stringify(filteredTransactions));
-  //! Find a better way
+  // TODO: Find a better way
   window.location.reload();
 };
 
-// Edit expense
+// TODO: Edit expenses

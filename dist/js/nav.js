@@ -1,9 +1,9 @@
-//* Toggle Mobile Navigation
 const toggleMobileNav = document.querySelector('#toggleMobileNav');
 const navigation = document.querySelector('#navigation');
 const navIcon = document.querySelector('#navIcon');
 
-// Toggle nav
+//* Toggle mobile navigation
+
 export const toggleNav = () => {
   if (navigation.classList.contains('nav__hidden')) {
     // Expand
@@ -22,7 +22,7 @@ export const toggleNav = () => {
   }
 };
 
-// Close nav
+// Force close
 export const closeNavBar = () => {
   navigation.classList.add('nav__hidden');
   navigation.classList.remove('nav__visible');

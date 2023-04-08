@@ -7,7 +7,8 @@ const expenseItems = document.querySelector('#expenseItems');
 const setExpenseTitle = document.querySelector('#setExpenseTitle');
 const setExpenseCost = document.querySelector('#setExpenseCost');
 
-// Create element
+//* Create element
+
 export const createNewElement = (element, classTitle, text) => {
   const newElement = document.createElement(element);
   newElement.classList.add(classTitle);
@@ -15,7 +16,32 @@ export const createNewElement = (element, classTitle, text) => {
   return newElement;
 };
 
-// Get expense date
+//* Save to local storage
+
+const localStorageTransactions = JSON.parse(
+  localStorage.getItem('transactions')
+);
+export const transactions =
+  localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
+
+//* Generate random ID
+
+const generateID = () => {
+  return Math.floor(Math.random() * 1000000000);
+};
+
+//* Get expense type
+
+const getExpenseType = () => {
+  const selectedExpenseType = document.querySelector(
+    'input[name = "expenseType"]:checked'
+  );
+  const type = selectedExpenseType.id;
+  return type;
+};
+
+//* New date
+
 const getExpenseDate = () => {
   const currentDate = new Date();
 
@@ -30,29 +56,6 @@ const getExpenseDate = () => {
   return `${currentMonth + 1}/${currentDay}/${currentYear}`;
 };
 
-// Get expense type
-const getExpenseType = () => {
-  const selectedExpenseType = document.querySelector(
-    'input[name = "expenseType"]:checked'
-  );
-  const type = selectedExpenseType.id;
-  return type;
-};
-
-// Generate random ID
-const generateID = () => {
-  return Math.floor(Math.random() * 1000000000);
-};
-
-// Save to local storage
-const localStorageTransactions = JSON.parse(
-  localStorage.getItem('transactions')
-);
-
-// Add transaction
-export const transactions =
-  localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
-
 // Calculate total expenses
 const expenses = transactions.map(transaction => parseFloat(transaction.cost));
 export let totalExpenses = expenses.reduce(
@@ -60,12 +63,13 @@ export let totalExpenses = expenses.reduce(
   0
 );
 
-// New transaction
+//* Create new transaction
+
 export const addTransaction = () => {
   let titleValue = setExpenseTitle.value;
   let costValue = setExpenseCost.value;
 
-  // Transaction object
+  // Create transaction object
   const transaction = {
     id: generateID(),
     title: formatExpenseTitle(titleValue),
@@ -75,18 +79,19 @@ export const addTransaction = () => {
     type: getExpenseType(),
   };
 
-  // Validate transaction
+  // Validate and push transaction to localStorage
   if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
     transactions.push(transaction);
     addExpense(transaction);
-    //! Find a better way
+    // TODO: Find a better way
     window.location.reload();
   }
 };
 
+//* Get new balance
+
 //! BUG: Won't calculate correctly unless page refreshed
 const calculateNewBalance = () => {
-  // Calculate balance
   let balance = parseFloat(budget) - parseFloat(totalExpenses);
 
   // Include cost of current transaction expense
@@ -98,7 +103,6 @@ const calculateNewBalance = () => {
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
     return expenseForm.reset();
-
     // Update balance
   } else {
     currentBalance.textContent = `$${newBalance}`;
@@ -106,16 +110,17 @@ const calculateNewBalance = () => {
   }
 };
 
-// Formatting and input validations
-const formatExpenseCost = cost => {
-  cost.trim();
-  cost = parseFloat(cost).toFixed(2);
-  return cost;
-};
+//* Formatting and input validations
 
 const formatExpenseTitle = title => {
   title.trim();
   return title;
+};
+
+const formatExpenseCost = cost => {
+  cost.trim();
+  cost = parseFloat(cost).toFixed(2);
+  return cost;
 };
 
 const validateExpenseTitle = title => {
@@ -147,10 +152,8 @@ const validateExpenseCost = cost => {
   } else if (!regex.test(cost)) {
     alert('Cost must be digits only');
     return expenseForm.reset();
-
-    // Cost --> Number
   } else {
-    cost = parseInt(cost);
+    cost = parseFloat(cost);
   }
 
   // Err if cost is less than 0 or greater than 10,000
@@ -161,7 +164,9 @@ const validateExpenseCost = cost => {
   return true;
 };
 
-// Add expense to DOM
+//* Add expense to DOM
+
+// Create transaction for localStorage
 const addExpense = transaction => {
   const expenseID = transaction.id;
   const expenseType = transaction.type;
@@ -170,7 +175,7 @@ const addExpense = transaction => {
   const dateValue = transaction.date;
   const balanceValue = transaction.balance;
 
-  // Expense item
+  // Create expense elements
   const newExpenseItem = createNewElement('ul', 'expense__item');
   newExpenseItem.classList.add(`${expenseType}`);
   newExpenseItem.classList.add('visible__flex');
@@ -210,7 +215,9 @@ const addExpense = transaction => {
   expenseControlsIcon.classList.add('bi-three-dots-vertical');
   expenseControlsBtn.appendChild(expenseControlsIcon);
 
-  // Add to DOM
+  //* Add to DOM
+
+  // Expense item
   expenseItems.prepend(newExpenseItem);
   newExpenseItem.setAttribute('aria-live', 'assertive');
 
@@ -220,6 +227,7 @@ const addExpense = transaction => {
   newExpenseItem.appendChild(newExpenseDate);
   newExpenseItem.appendChild(newExpenseBalance);
 
+  // Expense controls button
   newExpenseItem.appendChild(expenseControlsBtn);
 
   // Reset form

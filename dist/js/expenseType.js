@@ -1,15 +1,17 @@
-// Filter by expense type
 const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterBtn = document.querySelector('#expenseFilterBtn');
 const filterSelect = document.querySelector('#expenseFilterSelect');
 const expenseItems = document.querySelectorAll('.expense__item');
 
-// Toggle filter options
+//* Toggle filter options
+
 export const toggleElement = (element, button) => {
+  // Show
   if (element.classList.contains('hidden')) {
     element.classList.remove('hidden');
     element.classList.add('visible__block');
     button.setAttribute('aria-expanded', 'true');
+    // Hide
   } else if (element.classList.contains('visible__block')) {
     element.classList.remove('visible__block');
     element.classList.add('hidden');
@@ -17,18 +19,20 @@ export const toggleElement = (element, button) => {
   }
 };
 
-// Filter expenses
+//* Filter expenses
+
 export const filterExpenses = () => {
   const selectedValue = filterSelect.value;
   // No filter --> Show all
   if (selectedValue === 'none') {
+    // Filter by expense type
     expenseItems.forEach(expenseItem => {
       if (expenseItem.classList.contains('hidden')) {
         showExpense(expenseItem);
       }
     });
   } else {
-    // Filter by expense type
+    // Show/hide items by current filter
     expenseItems.forEach(expenseItem => {
       if (expenseItem.classList.contains(selectedValue)) {
         showExpense(expenseItem);

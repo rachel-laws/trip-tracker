@@ -30,7 +30,7 @@ const initApp = () => {
     toggleNav();
   });
 
-  // New expense
+  // Add expenses
   expenseForm.addEventListener('submit', event => {
     event.preventDefault();
 
@@ -44,14 +44,14 @@ const initApp = () => {
   });
   filterSelect.addEventListener('change', filterExpenses);
 
-  // Expense control buttons
+  // Expense controls
   controlsBtn.forEach(button => {
     button.addEventListener('click', event => {
       createControls(event);
     });
   });
    
-  // New budget
+  // Set new budget
   budgetForm.addEventListener('submit', event => {
     const budgetModal = document.querySelector('#budgetModal');
     event.preventDefault();
@@ -69,7 +69,7 @@ const initApp = () => {
   operateCurrencyModal();
   operateBudgetModal();
 
-  // Load saved content
+  // Load data
   updateLocalStorage();
   updateValues();
 };
