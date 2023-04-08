@@ -532,14 +532,17 @@ section {
   border: none;
 }
 
-.expense__controls-btn i {
+.expense__controls-btn {
   font-size: 1.5rem;
   color: var(--subheading-text-color);
+}
+
+.expense__controls-btn i {
   pointer-events: none;
 }
 
-.expense__controls-btn i:hover,
-.expense__controls-btn i:focus-visible {
+.expense__controls-btn:hover,
+.expense__controls-btn:focus-visible {
   color: #b53636;
 }
 
@@ -593,6 +596,11 @@ section {
   background: var(--expense-bg);
 
   transition: 150ms ease;
+}
+
+.expense__controls-delete i,
+.expense__controls-edit i {
+  pointer-events: none;
 }
 
 .expense__controls-delete:hover,

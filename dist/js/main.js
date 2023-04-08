@@ -1,8 +1,8 @@
 import { newBudgetAmount, budget } from './budget.js';
 import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseType.js';
-import { toggleNav, closeNavBar } from './nav.js';
 import { createControls } from './expenseEdit.js';
+import { toggleNav, closeNavBar } from './nav.js';
 import {
   operateTripsModal,
   operateCurrencyModal,
@@ -21,6 +21,8 @@ const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterSelect = document.querySelector('#expenseFilterSelect');
 
 const controlsBtn = document.querySelectorAll('.expense__controls-btn');
+const editBtn = document.querySelector('#editExpenseBtn');
+const deleteBtn = document.querySelector('#deleteExpenseBtn');
 
 const initApp = () => {
   // Mobile Navigation
@@ -48,7 +50,7 @@ const initApp = () => {
       createControls(event);
     });
   });
-
+   
   // New budget
   budgetForm.addEventListener('submit', event => {
     const budgetModal = document.querySelector('#budgetModal');
