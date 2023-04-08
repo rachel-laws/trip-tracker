@@ -8,14 +8,14 @@ import {
   operateBudgetModal,
 } from './modals.js';
 
+const toggleMobileNav = document.querySelector('#toggleMobileNav');
 const expenseForm = document.querySelector('#newExpense');
 const currentBudget = document.querySelector('#currentBudget');
 const currentBalance = document.querySelector('#currentBalance');
-const setExpenseCost = document.querySelector('#setExpenseCost');
 const budgetForm = document.querySelector('#budgetForm');
 const filterContainer = document.querySelector('#expenseFilterContainer');
-const filterBtn = document.querySelector('#expenseFilterBtn');
 const filterSelect = document.querySelector('#expenseFilterSelect');
+const filterBtn = document.querySelector('#expenseFilterBtn');
 
 const initApp = () => {
   // Mobile Navigation
@@ -71,7 +71,6 @@ const updateValues = () => {
   if (transactionsArr === null || JSON.parse(transactionsArr).length === 0) {
     currentBalance.textContent = `$${budget}`;
   } else {
-    // const transactions = JSON.parse(transactionsArr);
     let balance = parseFloat(budget) - parseFloat(totalExpenses);
     balance = balance.toFixed(2);
     currentBalance.textContent = `$${balance}`;

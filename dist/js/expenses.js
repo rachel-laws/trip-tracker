@@ -30,11 +30,11 @@ const getExpenseDate = () => {
   return `${currentMonth + 1}/${currentDay}/${currentYear}`;
 };
 
+// Get expense type
 const getExpenseType = () => {
   const selectedExpenseType = document.querySelector(
     'input[name = "expenseType"]:checked'
   );
-
   const type = selectedExpenseType.id;
   return type;
 };
@@ -45,7 +45,7 @@ const generateID = () => {
 };
 
 // Save to local storage
-export const localStorageTransactions = JSON.parse(
+const localStorageTransactions = JSON.parse(
   localStorage.getItem('transactions')
 );
 
@@ -75,27 +75,29 @@ export const addTransaction = () => {
     type: getExpenseType(),
   };
 
+  // Validate transaction
   if (validateExpenseTitle(titleValue) && validateExpenseCost(costValue)) {
     transactions.push(transaction);
     addExpense(transaction);
+    //! Find a better way
+    window.location.reload();
   }
 };
 
+//! BUG: Won't calculate correctly unless page refreshed
 const calculateNewBalance = () => {
   // Calculate balance
-  let costValue = setExpenseCost.value;
-  totalExpenses = parseFloat(totalExpenses);
-  costValue = parseFloat(costValue);
+  let balance = parseFloat(budget) - parseFloat(totalExpenses);
 
-  let balance = parseFloat(budget) - totalExpenses;
   // Include cost of current transaction expense
-  let newBalance = balance - costValue;
+  let costValue = setExpenseCost.value;
+  costValue = parseFloat(costValue);
+  const newBalance = (balance - costValue).toFixed(2);
 
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
     return expenseForm.reset();
   } else {
-    newBalance = newBalance.toFixed(2);
     currentBalance.textContent = `$${newBalance}`;
     return newBalance;
   }
@@ -149,7 +151,7 @@ const validateExpenseCost = cost => {
   return true;
 };
 
-// New expense
+// Add expense to DOM
 const addExpense = transaction => {
   const expenseType = transaction.type;
   const titleValue = transaction.title;

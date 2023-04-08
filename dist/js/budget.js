@@ -8,7 +8,7 @@ const budgetForm = document.querySelector('#budgetForm');
 const setBudgetAmount = document.querySelector('#setBudgetAmount');
 
 // Save to local storage
-let localStorageBudget = JSON.parse(localStorage.getItem('budget'));
+const localStorageBudget = JSON.parse(localStorage.getItem('budget'));
 
 // Current budget value
 export let budget =
