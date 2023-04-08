@@ -55,7 +55,7 @@ export const transactions =
 
 // Calculate total expenses
 const expenses = transactions.map(transaction => parseFloat(transaction.cost));
-export const totalExpenses = expenses.reduce(
+export let totalExpenses = expenses.reduce(
   (total, expense) => (total += expense),
   0
 );
@@ -84,16 +84,18 @@ export const addTransaction = () => {
 const calculateNewBalance = () => {
   // Calculate balance
   let costValue = setExpenseCost.value;
+  totalExpenses = parseFloat(totalExpenses);
   costValue = parseFloat(costValue);
-  const balance = budget - totalExpenses - costValue;
 
+  let balance = parseFloat(budget) - totalExpenses;
   // Include cost of current transaction expense
-  const newBalance = balance.toFixed(2);
+  let newBalance = balance - costValue;
 
   if (newBalance < 0) {
     alert('Balance cannot be negative -- Set a higher budget to continue');
     return expenseForm.reset();
   } else {
+    newBalance = newBalance.toFixed(2);
     currentBalance.textContent = `$${newBalance}`;
     return newBalance;
   }

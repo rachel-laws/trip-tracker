@@ -72,11 +72,7 @@ const updateValues = () => {
     currentBalance.textContent = `$${budget}`;
   } else {
     // const transactions = JSON.parse(transactionsArr);
-    let costValue = setExpenseCost.value;
     let balance = parseFloat(budget) - parseFloat(totalExpenses);
-    if (costValue) {
-      balance = balance - parseFloat(costValue);
-    }
     balance = balance.toFixed(2);
     currentBalance.textContent = `$${balance}`;
   }
