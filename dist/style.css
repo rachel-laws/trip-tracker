@@ -527,6 +527,7 @@ section {
   position: absolute;
   left: -3px;
   bottom: 0;
+
   background: transparent;
   border: none;
 }
@@ -534,12 +535,18 @@ section {
 .expense__controls-btn i {
   font-size: 1.5rem;
   color: var(--subheading-text-color);
+  pointer-events: none;
+}
+
+.expense__controls-btn i:hover,
+.expense__controls-btn i:focus-visible {
+  color: #b53636;
 }
 
 .expense__controls-options {
-  position: relative;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 1.85rem;
+  left: -1px;
 }
 
 .expense__controls {
@@ -547,10 +554,12 @@ section {
   z-index: 5;
 
   display: flex;
-  gap: 3px;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
 
   width: 3.7rem;
-  padding: 2px;
+  padding: 2.5px 2.5px 2.25px;
 
   background: var(--subheading-text-color);
   border-radius: var(--border-radius);
@@ -560,13 +569,15 @@ section {
   content: '';
   position: absolute;
   left: 0;
-  top: 1.5rem;
+  bottom: 1.5rem;
 
   width: 0;
   height: 0;
 
-  border-bottom: 18px solid transparent;
+  border-top: 18px solid transparent;
   border-left: 18px solid var(--subheading-text-color);
+
+  pointer-events: none;
 }
 
 .expense__controls-delete,

@@ -8,7 +8,7 @@ const setExpenseTitle = document.querySelector('#setExpenseTitle');
 const setExpenseCost = document.querySelector('#setExpenseCost');
 
 // Create element
-const createNewElement = (element, classTitle, text) => {
+export const createNewElement = (element, classTitle, text) => {
   const newElement = document.createElement(element);
   newElement.classList.add(classTitle);
   newElement.textContent = text;
@@ -198,12 +198,6 @@ const addExpense = transaction => {
   );
   newExpenseBalance.classList.add('mobile-hidden');
 
-  // Expense controls
-  const expenseControlsContainer = createNewElement(
-    'div',
-    'expense__controls-container'
-  );
-
   // Show controls button
   const expenseControlsBtn = createNewElement(
     'button',
@@ -216,33 +210,6 @@ const addExpense = transaction => {
   expenseControlsIcon.classList.add('bi-three-dots-vertical');
   expenseControlsBtn.appendChild(expenseControlsIcon);
 
-  // To show/hide expenseControls
-  const expenseControlsOptions = createNewElement(
-    'div',
-    'expense__controls-options'
-  );
-
-  // Container for edit/delete buttons
-  const expenseControls = createNewElement('div', 'expense__controls');
-
-  // Edit button
-  const expenseEdit = createNewElement('button', 'expense__controls-edit');
-  expenseEdit.title = 'Edit';
-  expenseEdit.id = 'editExpenseBtn';
-  // Icon
-  const expenseEditIcon = createNewElement('i', 'fa-solid');
-  expenseEditIcon.classList.add('fa-pencil');
-  expenseEdit.appendChild(expenseEditIcon);
-
-  // Delete button
-  const expenseDelete = createNewElement('button', 'expense__controls-delete');
-  expenseDelete.title = 'Delete';
-  expenseDelete.id = 'deleteExpenseBtn';
-  // Icon
-  const expenseDeleteIcon = createNewElement('i', 'fa-solid');
-  expenseDeleteIcon.classList.add('fa-trash-can');
-  expenseDelete.appendChild(expenseDeleteIcon);
-
   // Add to DOM
   expenseItems.prepend(newExpenseItem);
   newExpenseItem.setAttribute('aria-live', 'assertive');
@@ -253,13 +220,7 @@ const addExpense = transaction => {
   newExpenseItem.appendChild(newExpenseDate);
   newExpenseItem.appendChild(newExpenseBalance);
 
-  newExpenseItem.appendChild(expenseControlsContainer);
-  expenseControlsContainer.appendChild(expenseControlsBtn);
-
-  newExpenseItem.appendChild(expenseControlsOptions);
-  expenseControlsOptions.appendChild(expenseControls);
-  expenseControls.appendChild(expenseEdit);
-  expenseControls.appendChild(expenseDelete);
+  newExpenseItem.appendChild(expenseControlsBtn);
 
   // Reset form
   expenseForm.reset();

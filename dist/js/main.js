@@ -2,6 +2,7 @@ import { newBudgetAmount, budget } from './budget.js';
 import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseType.js';
 import { toggleNav, closeNavBar } from './nav.js';
+import { createControls } from './expenseEdit.js';
 import {
   operateTripsModal,
   operateCurrencyModal,
@@ -9,13 +10,17 @@ import {
 } from './modals.js';
 
 const toggleMobileNav = document.querySelector('#toggleMobileNav');
-const expenseForm = document.querySelector('#newExpense');
+
+const budgetForm = document.querySelector('#budgetForm');
 const currentBudget = document.querySelector('#currentBudget');
 const currentBalance = document.querySelector('#currentBalance');
-const budgetForm = document.querySelector('#budgetForm');
+
+const expenseForm = document.querySelector('#newExpense');
+const filterBtn = document.querySelector('#expenseFilterBtn');
 const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterSelect = document.querySelector('#expenseFilterSelect');
-const filterBtn = document.querySelector('#expenseFilterBtn');
+
+const controlsBtn = document.querySelectorAll('.expense__controls-btn');
 
 const initApp = () => {
   // Mobile Navigation
@@ -31,11 +36,18 @@ const initApp = () => {
     updateLocalStorage();
   });
 
+  // Filter expenses
   filterBtn.addEventListener('click', () => {
     toggleElement(filterContainer, filterBtn);
   });
-
   filterSelect.addEventListener('change', filterExpenses);
+
+  // Expense control buttons
+  controlsBtn.forEach(button => {
+    button.addEventListener('click', event => {
+      createControls(event);
+    });
+  });
 
   // New budget
   budgetForm.addEventListener('submit', event => {
