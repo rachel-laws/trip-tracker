@@ -15,14 +15,14 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/main.css" />
     <link rel="shortcut icon" href="/assets/favicon.svg" type="image/svg" />
     <title>TripTrackr</title>
   </head>
   <body>
     <header>
       <img src="/assets/logo.svg" alt="TripTracker" />
-      <nav id="navigation" class="nav__hidden">
+      <nav id="navigation" class="mobile-hidden">
         <button id="nav__btn-trips" aria-controls="tripsModal">
           <span class="sr-only">Open </span>
           <i class="bi bi-airplane"></i>Trips
@@ -38,7 +38,7 @@
       </nav>
       <button
         id="toggleMobileNav"
-        class="nav__toggle--mobile"
+        class="nav__toggle-mobile"
         aria-controls="navigation"
         aria-expanded="false">
         <i id="navIcon" class="bi bi-list"></i>
@@ -77,11 +77,11 @@
       <!-- Expenses -->
       <section id="expenses" class="expenses">
         <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
-        <form id="newExpense" class="expense__form">
+        <form id="newExpense" class="expense__form" autocomplete="off">
           <legend>Add<span class="sr-only"> New</span> Expense</legend>
           <label class="expense__type-label">Type</label>
           <fieldset class="expense__type">
-            <div class="expense__type-shopping">
+            <div class="expense__type-btn">
               <i class="bi bi-cart3"></i>
               <label for="expenseType" class="radio-label">
                 Shopping
@@ -94,7 +94,7 @@
                   required />
               </label>
             </div>
-            <div class="expense__type-food">
+            <div class="expense__type-btn">
               <i class="bi bi-cup-hot"></i>
               <label for="food" class="radio-label">
                 Food
@@ -106,7 +106,7 @@
                   name="expenseType" />
               </label>
             </div>
-            <div class="expense__type-activities">
+            <div class="expense__type-btn">
               <i class="bi bi-binoculars"></i>
               <label for="activities" class="radio-label">
                 Activities
@@ -118,7 +118,7 @@
                   name="expenseType" />
               </label>
             </div>
-            <div class="expense__type-transport">
+            <div class="expense__type-btn">
               <i class="bi bi-bus-front"></i>
               <label for="transport" class="radio-label">
                 Transport
@@ -130,7 +130,7 @@
                   name="expenseType" />
               </label>
             </div>
-            <div class="expense__type-lodging">
+            <div class="expense__type-btn">
               <i class="bi bi-buildings"></i>
               <label for="lodging" class="radio-label">
                 Lodging
@@ -142,7 +142,7 @@
                   name="expenseType" />
               </label>
             </div>
-            <div class="expense__type-misc">
+            <div class="expense__type-btn">
               <i class="bi bi-plus-circle"></i>
               <label for="misc" class="radio-label">
                 Misc.
@@ -164,9 +164,10 @@
                 type="text"
                 name="setExpenseTitle"
                 placeholder="Enter Expense Title"
-                required />
+                required
+                autocomplete="new-password" />
             </label>
-            <div class="expense__form-wrapper">
+            <div class="expense__info-wrapper">
               <label for="setExpenseCost">
                 Cost
                 <input
@@ -179,10 +180,9 @@
               </label>
               <label for="selectCurrency">
                 <span class="sr-only">Expense </span>Currency
-                <select id="selectCurrency" name="changeCurrency" required>
-                  <option id="USD" value="USD">USD</option>
+                <select id="selectCurrency" name="changeCurrency">
+                  <option id="USD" class="default" value="USD">USD</option>
                   <option id="EUR" value="EUR">Euros</option>
-                  <option id="HRK" value="HRK">Kunas</option>
                 </select>
               </label>
             </div>

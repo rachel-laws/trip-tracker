@@ -1,0 +1,30 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+nav {
+  @include m.flexCenter;
+  gap: 1rem;
+  flex-wrap: nowrap;
+
+  @include m.mqw {
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    padding-inline: 10vw;
+
+    justify-content: flex-start;
+    flex-direction: column;
+
+    padding-top: 40%;
+    background: c.$body-bg;
+
+    button {
+      width: 75%;
+      max-width: 15rem;
+      margin-bottom: 1rem;
+
+      font-size: 1.3rem;
+    }
+  }
+}

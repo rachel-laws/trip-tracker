@@ -1,4 +1,4 @@
-// import { showExpense, hideExpense } from './expenseType.js';
+// import { showExpense, hideExpense } from './expenseFilter.js';
 
 // const nextBtn = document.querySelector('#nextPageBtn');
 // const previousBtn = document.querySelector('#previousPageBtn');

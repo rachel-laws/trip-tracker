@@ -1,0 +1,60 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+footer {
+  position: relative;
+  z-index: -5;
+
+  @include m.flexCenter;
+
+  height: 4rem;
+  font-size: 0.9rem;
+
+  border-top: v.$light-border;
+  background: c.$footer-bg;
+  box-shadow: 0px -1px 6px c.$light-shadow-color;
+
+  a {
+    position: relative;
+    z-index: -2;
+
+    padding: 0.25rem 0.75rem;
+
+    border-radius: v.$border-radius;
+    border: v.$border;
+    background: c.$footer-bg;
+    box-shadow: v.$shadow;
+
+    transition: 100ms ease;
+
+    i {
+      margin-right: 2px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+
+      width: 0px;
+      height: 100%;
+
+      background: c.$fill-bg;
+
+      transition: 250ms ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      width: 100%;
+    }
+
+    &:active {
+      transform: translate(4.5px);
+      box-shadow: none;
+    }
+  }
+}

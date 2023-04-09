@@ -1,0 +1,16 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: c.$text;
+}
+
+h1 {
+  color: c.$heading-text;
+}
+
+label {
+  color: c.$subheading-text;
+}

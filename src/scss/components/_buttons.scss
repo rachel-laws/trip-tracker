@@ -1,0 +1,219 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+button,
+select,
+.submit {
+  border-radius: v.$border-radius;
+  font-family: inherit;
+  cursor: pointer;
+  user-select: none;
+}
+
+nav button {
+  position: relative;
+  z-index: 2;
+
+  width: 8.5rem;
+  padding: 0.35rem 0.5rem;
+
+  font-size: 1.1rem;
+  color: c.$btn-text;
+
+  border: 1px solid c.$text;
+  background: c.$alt-fill-bg;
+  box-shadow: v.$shadow;
+
+  transition: 150ms ease;
+
+  i {
+    margin-right: 3px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 2px;
+    left: 5px;
+    right: 5px;
+
+    width: 0;
+    height: 1px;
+
+    border-radius: v.$border-radius;
+    background: c.$btn-text;
+
+    transition: 250ms ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: v.$shadow, 2px 2px 4px #862c388b;
+
+    &::before {
+      width: calc(100% - 10px);
+    }
+  }
+
+  &:active {
+    transform: translate(4.5px);
+    box-shadow: none;
+  }
+}
+
+.nav__toggle-mobile {
+  display: none;
+  z-index: 999;
+
+  padding: 3px;
+
+  font-size: 2rem;
+  color: c.$subheading-text;
+
+  border: none;
+  background: transparent;
+
+  transition: 150ms ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: rotate(5deg);
+    color: c.$btn-bg;
+  }
+
+  &:active {
+    font-size: 2.2rem;
+  }
+}
+
+.submit {
+  font-size: 1rem;
+  color: c.$btn-text;
+  font-weight: 500;
+
+  border: v.$border;
+  box-shadow: v.$shadow;
+  background: c.$btn-bg;
+
+  transition: 100ms ease;
+
+  &:active {
+    transform: translate(4.5px);
+    box-shadow: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: c.$text;
+    background: c.$fill-bg;
+  }
+}
+
+.expense__form .submit {
+  align-self: end;
+
+  width: 4rem;
+  height: 1.7rem;
+
+  @include m.mqw {
+    align-self: auto;
+    margin-top: 8px;
+    width: 100%;
+  }
+}
+
+.expense__filter-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  font-size: 1.2rem;
+  color: c.$subheading-text;
+
+  background: none;
+  border: none;
+
+  transition: 100ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: c.$hover;
+  }
+
+  &:active {
+    color: c.$subheading-text;
+  }
+}
+
+.expense__controls-btn {
+  position: absolute;
+  left: -3px;
+  bottom: 0;
+
+  font-size: 1.5rem;
+  color: c.$subheading-text;
+
+  background: transparent;
+  border: none;
+
+  i {
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: c.$hover;
+  }
+}
+
+.expense__controls-delete,
+.expense__controls-edit {
+  z-index: 6;
+  padding: 0.15rem 0.25rem;
+
+  font-size: 1.2rem;
+  color: c.$heading-text;
+
+  border: none;
+  background: c.$content-bg;
+
+  transition: 150ms ease;
+
+  i {
+    pointer-events: none;
+  }
+}
+
+.expense__controls-delete {
+  &:hover,
+  &:focus-visible {
+    color: #dd1010;
+    background: c.$input-bg;
+  }
+  &:active {
+    color: c.$heading-text;
+  }
+}
+
+.expense__controls-edit {
+  &:hover,
+  &:focus-visible {
+    color: c.$hover;
+    background: c.$input-bg;
+  }
+  &:active {
+    color: c.$heading-text;
+  }
+}
+
+.expense__new-title-submit {
+  margin-left: 3px;
+  padding-inline: 3px;
+  
+  color: c.$btn-text;
+  cursor: pointer;
+  border-radius: v.$border-radius;
+  background: c.$btn-bg;
+}

@@ -1,6 +1,6 @@
 import { newBudgetAmount, budget } from './budget.js';
 import { addTransaction, totalExpenses, transactions } from './expenses.js';
-import { toggleElement, filterExpenses } from './expenseType.js';
+import { toggleElement, filterExpenses } from './expenseFilter.js';
 import { createControls } from './expenseEdit.js';
 import { toggleNav, closeNavBar } from './nav.js';
 import {
@@ -50,7 +50,7 @@ const initApp = () => {
       createControls(event);
     });
   });
-   
+
   // Set new budget
   budgetForm.addEventListener('submit', event => {
     const budgetModal = document.querySelector('#budgetModal');

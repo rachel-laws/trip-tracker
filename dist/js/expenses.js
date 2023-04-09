@@ -234,13 +234,6 @@ const addExpense = transaction => {
   expenseForm.reset();
 };
 
-//! Remove transaction
-// const removeTransaction = id => {
-//   transactions = transactions.filter(transaction => transaction.id !== id);
-//   updateLocalStorage();
-//   Init();
-// };
-
 const init = () => {
   transactions.forEach(addExpense);
 };

@@ -1,0 +1,109 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.modal {
+  position: fixed;
+
+  margin: auto;
+  padding: 2.5rem 4rem;
+
+  color: c.$text;
+  text-align: center;
+
+  border: v.$border;
+  border-radius: v.$border-radius;
+  background: c.$content-bg;
+  box-shadow: v.$shadow;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 0.7);
+    backdrop-filter: blur(3px);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  label {
+    font-size: 1.6rem;
+    color: c.$heading-text;
+    font-weight: 600;
+  }
+
+  select,
+  input:not(.submit) {
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    color: c.$text;
+
+    border: v.$border;
+    border-radius: v.$border-radius;
+    background: c.$input-bg;
+    box-shadow: v.$shadow;
+  }
+
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .submit {
+    margin: auto;
+    padding: 0.5rem;
+    width: 5rem;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 7px;
+
+  font-size: 1.6rem;
+  color: c.$text;
+
+  border: none;
+  background: transparent;
+
+  transition: 150ms ease;
+
+  &:hover {
+    font-size: 1.8rem;
+  }
+}
+
+.currency__container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+
+  margin-bottom: 1.5rem;
+  padding: 0rem 4rem 1.5rem;
+
+  border-bottom: v.$border;
+
+  img {
+    height: 3rem;
+  }
+}
+
+.currency__title {
+  margin-bottom: 1rem;
+
+  color: c.$heading-text;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.currency__current {
+  font-size: 2.6rem;
+  font-weight: 500;
+}

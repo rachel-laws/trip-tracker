@@ -1,0 +1,33 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+body {
+  position: relative;
+  z-index: -5;
+  background: c.$body-bg;
+}
+
+main {
+  min-height: calc(100vh - 8rem);
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+}
+
+section {
+  @include m.flexCenter;
+  gap: 2rem;
+
+  max-width: 900px;
+  margin: 0rem auto;
+  padding: 2rem;
+
+  @include m.mqw {
+    padding: 0 0 2rem;
+  }
+}
+
+.trips,
+.expenses {
+  flex-direction: column;
+}

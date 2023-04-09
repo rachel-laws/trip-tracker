@@ -112,9 +112,12 @@ const editExpense = editBtn => {
   titleInput.type = 'text';
   titleInput.setAttribute('minlength', '1');
   titleInput.setAttribute('maxlength', '12');
+  titleInput.setAttribute('autocomplete', 'off');
+
   // titleInput.setAttribute('required');
   titleInput.id = 'newExpenseTitle';
-  titleInput.placeholder = 'Enter new title';
+  titleInput.placeholder = 'Enter New Title';
+  titleInput.required = true;
   newTitleForm.appendChild(titleInput);
   // Create submit button
   const titleSubmit = createNewElement('input', 'expense__new-title-submit');
@@ -130,6 +133,11 @@ const editExpense = editBtn => {
     // Change expense title
     const id = parseFloat(expenseItem.id);
     const newTitle = titleInput.value;
+    if (newTitle.trim() === '') {
+      alert('Enter an expense title');
+      newTitleForm.reset();
+      return newTitleForm.remove();
+    }
     transactions
       .filter(transaction => transaction.id === id)
       .forEach(transaction => {

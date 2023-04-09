@@ -1,0 +1,31 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 899;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 3.5rem;
+  padding: 0.25rem 1.5rem 0.25rem 0.75rem;
+
+  text-align: center;
+  border-bottom: v.$light-border;
+  box-shadow: 0px 2px 6px c.$light-shadow-color;
+  background: c.$header-bg;
+
+  img {
+    width: 13rem;
+  }
+
+  @include m.mqw {
+    padding-inline: 0.5rem 0.75rem;
+  }
+}

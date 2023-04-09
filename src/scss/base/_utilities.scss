@@ -1,0 +1,33 @@
+@use '../abstracts/mixins' as m;
+
+.visible-flex {
+  display: flex;
+}
+
+.visible-block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  left: -1000px;
+  top: -1000px;
+  width: 1px;
+  height: 1px;
+  text-align: left;
+  overflow: hidden;
+}
+
+@include m.mqw {
+  .mobile-hidden {
+    display: none;
+  }
+
+  .nav__toggle-mobile {
+    display: block !important;
+  }
+}

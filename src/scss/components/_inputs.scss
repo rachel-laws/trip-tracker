@@ -1,0 +1,124 @@
+@use '../abstracts/colors' as c;
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+input::placeholder {
+  color: c.$placeholder;
+}
+
+.expense__form input:not(.submit),
+select {
+  display: block;
+
+  font-size: 0.9rem;
+  color: c.$text;
+
+  border: v.$border;
+  background: c.$input-bg;
+  box-shadow: v.$shadow;
+}
+
+.expense__info {
+  label {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  input:not(.submit),
+  select {
+    height: 1.7rem;
+    margin-top: 8px;
+    padding: 0.25rem 0.5rem;
+    border-radius: v.$border-radius;
+  }
+
+  select {
+    width: 5.25rem;
+  }
+}
+
+.expense__title-input {
+  width: 11.5rem;
+}
+
+.expense__cost-input {
+  width: 5.25rem;
+}
+
+.expense__form .expense__type-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.expense__type {
+  label {
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  input {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+
+    width: 3.2rem;
+    height: 3.2rem;
+    margin-inline: auto;
+    margin-top: 5px;
+
+    border-radius: 50%;
+    border: v.$light-border;
+    box-shadow: v.$shadow;
+
+    transition: 150ms ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: scale(1.15);
+      border-color: c.$heading-text;
+    }
+
+    &:checked {
+      border-width: 4px;
+      border-color: c.$btn-bg;
+    }
+  }
+}
+
+.expense__filter-container {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 0;
+
+  select {
+    width: min-content;
+    margin-top: 2px;
+    padding: 2px;
+    text-align: center;
+  }
+}
+
+.expense__new-title-form {
+  position: absolute;
+  display: flex;
+  align-items: center;
+
+  margin-left: 1rem;
+  background: c.$content-bg;
+
+  input {
+    height: 1.3rem;
+    border: v.$light-border;
+  }
+}
+
+.expense__new-title-input {
+  width: 6rem;
+  padding: 0.25rem;
+  border-radius: v.$border-radius;
+
+  font-size: 0.8rem;
+}
+
