@@ -1,6 +1,6 @@
 import { createNewElement } from './expenses.js';
 
-const expenseTitle = document.querySelector('.expense__title');
+// TODO
 
 //* Create expense control options
 

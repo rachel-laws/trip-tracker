@@ -640,7 +640,6 @@ section {
   height: 1.3rem;
   border: var(--light-border);
   border-radius: var(--border-radius);
-
 }
 .expense__new-title-input {
   width: 6rem;
