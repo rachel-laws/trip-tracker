@@ -62,9 +62,9 @@ export const createControls = event => {
   });
 
   // Edit button
-  //   expenseEdit.addEventListener('click', () => {
-  //     editExpense(expenseEdit);
-  //   });
+  expenseEdit.addEventListener('click', () => {
+    editExpense(expenseEdit);
+  });
 };
 
 //* Delete expenses
@@ -88,4 +88,57 @@ export const deleteExpense = deleteBtn => {
   window.location.reload();
 };
 
-// TODO: Edit expenses
+//* Edit expenses
+
+const editExpense = editBtn => {
+  const transactions = JSON.parse(localStorage.getItem('transactions'));
+  // Get selected expense item
+  let expenseItem = editBtn.parentElement;
+  while (!expenseItem.classList.contains('expense__item')) {
+    expenseItem = expenseItem.parentElement;
+  }
+  const existingTitleForm = expenseItem.querySelector(
+    '.expense__new-title-form'
+  );
+  // Same button clicked --> Remove existing control options
+  if (existingTitleForm) {
+    return existingTitleForm.remove();
+  }
+
+  // Create new expense title form
+  const newTitleForm = createNewElement('form', 'expense__new-title-form');
+  // Create edit title input
+  const titleInput = createNewElement('input', 'expense__new-title-input');
+  titleInput.type = 'text';
+  titleInput.setAttribute('minlength', '1');
+  titleInput.setAttribute('maxlength', '12');
+  // titleInput.setAttribute('required');
+  titleInput.id = 'newExpenseTitle';
+  titleInput.placeholder = 'Enter new title';
+  newTitleForm.appendChild(titleInput);
+  // Create submit button
+  const titleSubmit = createNewElement('input', 'expense__new-title-submit');
+  titleSubmit.type = 'submit';
+  titleSubmit.id = 'submitExpenseTitle';
+  titleSubmit.value = 'Go';
+  newTitleForm.appendChild(titleSubmit);
+  // Add to DOM
+  expenseItem.appendChild(newTitleForm);
+  // Enter new expense title
+  newTitleForm.addEventListener('submit', event => {
+    event.preventDefault();
+    // Change expense title
+    const id = parseFloat(expenseItem.id);
+    const newTitle = titleInput.value;
+    transactions
+      .filter(transaction => transaction.id === id)
+      .forEach(transaction => {
+        transaction.title = newTitle;
+        localStorage.setItem('transactions', JSON.stringify(transactions));
+        newTitleForm.reset();
+        newTitleForm.remove();
+        // TODO: Find a better way
+        window.location.reload();
+      });
+  });
+};

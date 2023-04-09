@@ -472,6 +472,10 @@ section {
   user-select: none;
 }
 
+.expense__subheadings li:first-of-type {
+  margin-left: 0.7rem;
+}
+
 .expense__filter-btn {
   position: absolute;
   left: 0;
@@ -523,6 +527,10 @@ section {
   box-shadow: var(--light-shadow);
 }
 
+.expense__title {
+  margin-left: 0.7rem;
+}
+
 .expense__controls-btn {
   position: absolute;
   left: -3px;
@@ -549,7 +557,7 @@ section {
 .expense__controls-options {
   position: absolute;
   top: 1.85rem;
-  left: -1px;
+  left: -0.5px;
 }
 
 .expense__controls {
@@ -618,6 +626,31 @@ section {
 .expense__controls-delete:active,
 .expense__controls-edit:active {
   color: var(--heading-text-color);
+}
+
+.expense__new-title-form {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.expense__new-title-input,
+.expense__new-title-submit {
+  height: 1.3rem;
+  border: var(--light-border);
+  border-radius: var(--border-radius);
+
+}
+.expense__new-title-input {
+  width: 6rem;
+  padding: 0.25rem;
+}
+
+.expense__new-title-submit {
+  color: var(--btn-text-color);
+  padding-inline: 2px;
+  background: var(--button-bg);
 }
 
 /* Modals */
@@ -873,7 +906,7 @@ footer a i {
     gap: 0.5rem;
   }
 
-  .expenses input[type='submit'] {
+  .expense__form .submit {
     align-self: auto;
     margin-top: 8px;
     width: 100%;
