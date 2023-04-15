@@ -3,65 +3,8 @@ select,
 .submit {
   border-radius: 1px;
   font-family: inherit;
-  cursor: pointer;
   user-select: none;
-}
-
-nav button {
-  position: relative;
-  z-index: 2;
-  width: 8.5rem;
-  padding: 0.35rem 0.5rem;
-  font-size: 1.1rem;
-  color: #f1f1f1;
-  border: 1px solid #3c0109;
-  background: linear-gradient(33deg, #de2e4c, #d44e33);
-  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235);
-  transition: 150ms ease;
-}
-nav button i {
-  margin-right: 3px;
-}
-nav button::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  bottom: 2px;
-  left: 5px;
-  right: 5px;
-  width: 0;
-  height: 1px;
-  border-radius: 1px;
-  background: #f1f1f1;
-  transition: 250ms ease;
-}
-nav button:hover, nav button:focus-visible {
-  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235), 2px 2px 4px rgba(134, 44, 56, 0.5450980392);
-}
-nav button:hover::before, nav button:focus-visible::before {
-  width: calc(100% - 10px);
-}
-nav button:active {
-  transform: translate(4.5px);
-  box-shadow: none;
-}
-
-.nav__toggle-mobile {
-  display: none;
-  z-index: 999;
-  padding: 3px;
-  font-size: 2rem;
-  color: #862c38;
-  border: none;
-  background: transparent;
-  transition: 150ms ease;
-}
-.nav__toggle-mobile:hover, .nav__toggle-mobile:focus-visible {
-  transform: rotate(5deg);
-  color: #d84b52;
-}
-.nav__toggle-mobile:active {
-  font-size: 2.2rem;
+  cursor: pointer;
 }
 
 .submit {
@@ -82,6 +25,13 @@ nav button:active {
   background: #ff8a6d;
 }
 
+.expense__type-btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .expense__form .submit {
   align-self: end;
   width: 4rem;
@@ -90,8 +40,8 @@ nav button:active {
 @media all and (max-width: 700px) {
   .expense__form .submit {
     align-self: auto;
+    width: 11.5rem;
     margin-top: 8px;
-    width: 100%;
   }
 }
 
@@ -162,8 +112,8 @@ nav button:active {
 .expense__new-title-submit {
   margin-left: 3px;
   padding-inline: 3px;
-  color: #f1f1f1;
   cursor: pointer;
+  color: #f1f1f1;
   border-radius: 1px;
   background: #d84b52;
 }
@@ -205,7 +155,8 @@ select {
   width: 5.25rem;
 }
 
-.expense__form .expense__type-label {
+.expense__type-label {
+  display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   text-align: center;
@@ -276,6 +227,44 @@ nav {
   gap: 1rem;
   flex-wrap: nowrap;
 }
+nav button {
+  position: relative;
+  z-index: 2;
+  width: 8.5rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  border: 1px solid #3c0109;
+  background: linear-gradient(33deg, #de2e4c, #d44e33);
+  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235);
+  transition: 150ms ease;
+}
+nav button i {
+  margin-right: 3px;
+}
+nav button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 3px;
+  left: 5px;
+  right: 5px;
+  width: 0;
+  height: 1px;
+  border-radius: 1px;
+  background: #f1f1f1;
+  transition: 250ms ease;
+}
+nav button:hover, nav button:focus-visible {
+  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235), 2px 2px 4px rgba(134, 44, 56, 0.5450980392);
+}
+nav button:hover::before, nav button:focus-visible::before {
+  width: calc(100% - 10px);
+}
+nav button:active {
+  transform: translate(4.5px);
+  box-shadow: none;
+}
 @media all and (max-width: 700px) {
   nav {
     position: fixed;
@@ -290,9 +279,26 @@ nav {
   nav button {
     width: 75%;
     max-width: 15rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     font-size: 1.3rem;
   }
+}
+
+.nav__toggle-mobile {
+  display: none;
+  z-index: 999;
+  padding: 3px;
+  font-size: 2rem;
+  color: #862c38;
+  border: none;
+  background: transparent;
+  transition: 150ms ease;
+}
+.nav__toggle-mobile:hover, .nav__toggle-mobile:focus-visible {
+  color: #d84b52;
+}
+.nav__toggle-mobile:active {
+  font-size: 2.2rem;
 }
 
 .modal {
@@ -453,6 +459,8 @@ header img {
   }
 }
 .expense__form legend {
+  display: block;
+  text-align: center;
   font-size: 1.5rem;
   font-weight: 600;
   color: #6f202b;
@@ -502,13 +510,6 @@ fieldset {
   color: #6f202b;
   font-size: 1.9rem;
   pointer-events: none;
-}
-
-.expense__type-btn {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .expense__container {

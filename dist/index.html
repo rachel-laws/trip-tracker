@@ -31,7 +31,7 @@
           <i class="bi bi-cash-stack"></i> Budget
           <span class="sr-only"> Settings</span>
         </button>
-        <button id="nav__btn-currency" aria-controls="currency__modal">
+        <button id="nav__btn-currency" aria-controls="currencyModal">
           <i class="bi bi-coin"></i> Currency
           <span class="sr-only"> Settings</span>
         </button>
@@ -42,7 +42,7 @@
         aria-controls="navigation"
         aria-expanded="false">
         <i id="navIcon" class="bi bi-list"></i>
-        <span class="sr-only">Toggle navigation menu</span>
+        <span class="sr-only">Toggle navigation</span>
       </button>
     </header>
     <main>
@@ -52,24 +52,24 @@
       <!-- Budget / Balance -->
       <section id="amounts" class="amounts">
         <div class="budget__container">
-          <h1 id="budget__heading">
+          <h1 id="budgetHeading">
             <span class="mobile-hidden">Your </span>Budget
           </h1>
           <p
             id="currentBudget"
-            aria-labelledby="budget__heading"
-            aria-live="assertive">
+            aria-labelledby="budgetHeading"
+            aria-live="polite">
             ~
           </p>
         </div>
         <div class="balance__container">
-          <h1 id="balance__heading">
+          <h1 id="balanceHeading">
             <span class="mobile-hidden">Current </span>Balance
           </h1>
           <p
             id="currentBalance"
-            aria-labelledby="balance__heading"
-            aria-live="assertive">
+            aria-labelledby="balanceHeading"
+            aria-live="polite">
             ~
           </p>
         </div>
@@ -78,115 +78,121 @@
       <section id="expenses" class="expenses">
         <a href="#expenseItems" class="sr-only">Skip to Expense List</a>
         <form id="newExpense" class="expense__form" autocomplete="off">
-          <legend>Add<span class="sr-only"> New</span> Expense</legend>
-          <label class="expense__type-label">Type</label>
-          <fieldset class="expense__type">
-            <div class="expense__type-btn">
-              <i class="bi bi-cart3"></i>
-              <label for="expenseType" class="radio-label">
-                Shopping
-                <input
-                  id="shopping"
-                  class="expense__type-btn"
-                  value="shopping"
-                  type="radio"
-                  name="expenseType"
-                  required />
-              </label>
+          <fieldset>
+            <legend>Add Expense</legend>
+            <label class="expense__type-label">Type</label>
+            <div class="expense__type">
+              <div class="expense__type-btn">
+                <i class="bi bi-cart3"></i>
+                <label for="expenseType" class="radio-label">
+                  Shopping
+                  <input
+                    id="shopping"
+                    class="expense__type-btn"
+                    value="shopping"
+                    type="radio"
+                    name="expenseType"
+                    required />
+                </label>
+              </div>
+              <div class="expense__type-btn">
+                <i class="bi bi-cup-hot"></i>
+                <label for="food" class="radio-label">
+                  Food
+                  <input
+                    id="food"
+                    class="expense__type-btn"
+                    value="food"
+                    type="radio"
+                    name="expenseType" />
+                </label>
+              </div>
+              <div class="expense__type-btn">
+                <i class="bi bi-binoculars"></i>
+                <label for="activities" class="radio-label">
+                  Activities
+                  <input
+                    id="activities"
+                    class="expense__type-btn"
+                    value="activities"
+                    type="radio"
+                    name="expenseType" />
+                </label>
+              </div>
+              <div class="expense__type-btn">
+                <i class="bi bi-bus-front"></i>
+                <label for="transport" class="radio-label">
+                  Transport
+                  <input
+                    id="transport"
+                    class="expense__type-btn"
+                    value="transport"
+                    type="radio"
+                    name="expenseType" />
+                </label>
+              </div>
+              <div class="expense__type-btn">
+                <i class="bi bi-buildings"></i>
+                <label for="lodging" class="radio-label">
+                  Lodging
+                  <input
+                    id="lodging"
+                    class="expense__type-btn"
+                    value="lodging"
+                    type="radio"
+                    name="expenseType" />
+                </label>
+              </div>
+              <div class="expense__type-btn">
+                <i class="bi bi-plus-circle"></i>
+                <label for="misc" class="radio-label">
+                  Misc.
+                  <input
+                    id="misc"
+                    class="expense__type-btn"
+                    value="misc"
+                    type="radio"
+                    name="expenseType" />
+                </label>
+              </div>
             </div>
-            <div class="expense__type-btn">
-              <i class="bi bi-cup-hot"></i>
-              <label for="food" class="radio-label">
-                Food
+            <div class="expense__info">
+              <label for="setExpenseTitle">
+                Title
                 <input
-                  id="food"
-                  class="expense__type-btn"
-                  value="food"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
-            <div class="expense__type-btn">
-              <i class="bi bi-binoculars"></i>
-              <label for="activities" class="radio-label">
-                Activities
-                <input
-                  id="activities"
-                  class="expense__type-btn"
-                  value="activities"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
-            <div class="expense__type-btn">
-              <i class="bi bi-bus-front"></i>
-              <label for="transport" class="radio-label">
-                Transport
-                <input
-                  id="transport"
-                  class="expense__type-btn"
-                  value="transport"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
-            <div class="expense__type-btn">
-              <i class="bi bi-buildings"></i>
-              <label for="lodging" class="radio-label">
-                Lodging
-                <input
-                  id="lodging"
-                  class="expense__type-btn"
-                  value="lodging"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
-            <div class="expense__type-btn">
-              <i class="bi bi-plus-circle"></i>
-              <label for="misc" class="radio-label">
-                Misc.
-                <input
-                  id="misc"
-                  class="expense__type-btn"
-                  value="misc"
-                  type="radio"
-                  name="expenseType" />
-              </label>
-            </div>
-          </fieldset>
-          <fieldset class="expense__info">
-            <label for="setExpenseTitle">
-              Title
-              <input
-                id="setExpenseTitle"
-                class="expense__title-input"
-                type="text"
-                name="setExpenseTitle"
-                placeholder="Enter Expense Title"
-                required
-                autocomplete="new-password" />
-            </label>
-            <div class="expense__info-wrapper">
-              <label for="setExpenseCost">
-                Cost
-                <input
-                  id="setExpenseCost"
-                  class="expense__cost-input"
+                  id="setExpenseTitle"
+                  class="expense__title-input"
                   type="text"
-                  name="setExpenseCost"
-                  placeholder="$0.00"
-                  required />
+                  name="setExpenseTitle"
+                  placeholder="Enter Expense Title"
+                  required
+                  autocomplete="new-password" />
               </label>
-              <label for="selectCurrency">
-                <span class="sr-only">Expense </span>Currency
-                <select id="selectCurrency" name="changeCurrency">
-                  <option id="USD" class="default" value="USD">USD</option>
-                  <option id="EUR" value="EUR">Euros</option>
-                </select>
-              </label>
+              <div class="expense__info-wrapper">
+                <label for="setExpenseCost">
+                  Cost
+                  <input
+                    id="setExpenseCost"
+                    class="expense__cost-input"
+                    type="text"
+                    name="setExpenseCost"
+                    placeholder="$0.00"
+                    required />
+                </label>
+                <label for="selectCurrency">
+                  <span class="sr-only">Expense </span>Currency
+                  <select id="selectCurrency" name="changeCurrency">
+                    <option id="USD" class="default" value="USD">USD</option>
+                    <option id="EUR" value="EUR">Euros</option>
+                  </select>
+                </label>
+              </div>
+              <input
+                id="addExpense"
+                type="submit"
+                class="submit"
+                value="Enter" />
             </div>
-            <input id="addExpense" type="submit" class="submit" value="Enter" />
           </fieldset>
         </form>
         <div class="expense__container">
@@ -226,10 +232,9 @@
         </div>
       </section>
       <!-- View Trips -->
-      <dialog id="tripsModal" class="trips__modal modal">
+      <dialog id="tripsModal" class="trips__modal modal" aria-modal="true">
         <button
           aria-controls="tripsModal"
-          aria-modal="true"
           id="closeTripsModal"
           class="modal__close">
           <i class="bi bi-x-lg"></i>
@@ -269,11 +274,8 @@
             class="currency__select"
             name="changeCurrency"
             required>
-            <option id="USD" value="">USD</option>
-
-            <option id="USD" value="USD">USD</option>
-            <option id="EUR" value="EUR">EUR</option>
-            <option id="HRK" value="HRK">HRK</option>
+            <option id="defaultUSD" value="USD">USD</option>
+            <option id="defaultEUR" value="EUR">EUR</option>
           </select>
           <input
             type="submit"

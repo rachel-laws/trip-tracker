@@ -18,6 +18,8 @@
   }
 
   legend {
+    display: block;
+    text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
     color: c.$heading-text;
@@ -70,11 +72,6 @@ fieldset {
     font-size: 1.9rem;
     pointer-events: none;
   }
-}
-
-.expense__type-btn {
-  position: relative;
-  @include m.flexCenter;
 }
 
 .expense__container {

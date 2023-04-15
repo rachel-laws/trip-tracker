@@ -7,6 +7,58 @@ nav {
   gap: 1rem;
   flex-wrap: nowrap;
 
+  button {
+    position: relative;
+    z-index: 2;
+
+    width: 8.5rem;
+    padding: 0.35rem 0.5rem;
+
+    font-size: 1.1rem;
+    color: c.$btn-text;
+
+    border: 1px solid c.$text;
+    background: c.$alt-fill-bg;
+    box-shadow: v.$shadow;
+
+    transition: 150ms ease;
+
+    i {
+      margin-right: 3px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      bottom: 3px;
+      left: 5px;
+      right: 5px;
+
+      width: 0;
+      height: 1px;
+
+      border-radius: v.$border-radius;
+      background: c.$btn-text;
+
+      transition: 250ms ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      box-shadow: v.$shadow, 2px 2px 4px #862c388b;
+
+      &::before {
+        width: calc(100% - 10px);
+      }
+    }
+
+    &:active {
+      transform: translate(4.5px);
+      box-shadow: none;
+    }
+  }
+
   @include m.mqw {
     position: fixed;
     z-index: 999;
@@ -22,9 +74,33 @@ nav {
     button {
       width: 75%;
       max-width: 15rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
 
       font-size: 1.3rem;
     }
+  }
+}
+
+.nav__toggle-mobile {
+  display: none;
+  z-index: 999;
+
+  padding: 3px;
+
+  font-size: 2rem;
+  color: c.$subheading-text;
+
+  border: none;
+  background: transparent;
+
+  transition: 150ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: c.$btn-bg;
+  }
+
+  &:active {
+    font-size: 2.2rem;
   }
 }

@@ -45,7 +45,8 @@ select {
   width: 5.25rem;
 }
 
-.expense__form .expense__type-label {
+.expense__type-label {
+  display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   text-align: center;
@@ -121,4 +122,3 @@ select {
 
   font-size: 0.8rem;
 }
-
