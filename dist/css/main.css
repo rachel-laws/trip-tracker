@@ -281,7 +281,7 @@ nav {
     position: fixed;
     z-index: 999;
     inset: 0;
-    padding-inline: 10vw;
+    padding-inline: calc(1rem + 12vw);
     justify-content: flex-start;
     flex-direction: column;
     padding-top: 40%;
