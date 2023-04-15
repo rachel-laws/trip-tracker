@@ -43,7 +43,7 @@ Use the filter button to filter your expenses by their type. Select filter by 'n
 
 ***
 
-By creating TripTrackr, I was able to practice and advance many of my developer skills. I was able to use my knowledge of JavaScript to create all of the functionality for this web app. I continued building my skills with SASS by creating an organization system which fit the project and ensuring the design works with all commonly used screen sizes.
+By creating TripTrackr, I was able to practice and advance many of my developer skills.
 
 . . .
 

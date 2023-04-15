@@ -7,6 +7,63 @@ select,
   user-select: none;
 }
 
+nav button {
+  position: relative;
+  z-index: 2;
+  width: 8.5rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  border: 1px solid #3c0109;
+  background: linear-gradient(33deg, #de2e4c, #d44e33);
+  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235);
+  transition: 150ms ease;
+}
+nav button i {
+  margin-right: 3px;
+}
+nav button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 2px;
+  left: 5px;
+  right: 5px;
+  width: 0;
+  height: 1px;
+  border-radius: 1px;
+  background: #f1f1f1;
+  transition: 250ms ease;
+}
+nav button:hover, nav button:focus-visible {
+  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235), 2px 2px 4px rgba(134, 44, 56, 0.5450980392);
+}
+nav button:hover::before, nav button:focus-visible::before {
+  width: calc(100% - 10px);
+}
+nav button:active {
+  transform: translate(4.5px);
+  box-shadow: none;
+}
+
+.nav__toggle-mobile {
+  display: none;
+  z-index: 999;
+  padding: 3px;
+  font-size: 2rem;
+  color: #862c38;
+  border: none;
+  background: transparent;
+  transition: 150ms ease;
+}
+.nav__toggle-mobile:hover, .nav__toggle-mobile:focus-visible {
+  transform: rotate(5deg);
+  color: #d84b52;
+}
+.nav__toggle-mobile:active {
+  font-size: 2.2rem;
+}
+
 .submit {
   font-size: 1rem;
   color: #f1f1f1;
@@ -217,92 +274,25 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-}
-nav a {
-  display: block;
-  margin: auto;
-  border-radius: 1px;
-}
-nav button,
-nav a {
-  position: relative;
-  z-index: 2;
-  width: 8.5rem;
-  padding: 0.35rem 0.5rem;
-  font-size: 1.1rem;
-  color: #f1f1f1;
-  border: 1px solid #3c0109;
-  background: linear-gradient(33deg, #de2e4c, #d44e33);
-  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235);
-  transition: 150ms ease;
-}
-nav button i,
-nav a i {
-  margin-right: 3px;
-}
-nav button::before,
-nav a::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  bottom: 2px;
-  left: 5px;
-  right: 5px;
-  width: 0;
-  height: 1px;
-  border-radius: 1px;
-  background: #f1f1f1;
-  transition: 250ms ease;
-}
-nav button:hover, nav button:focus-visible,
-nav a:hover,
-nav a:focus-visible {
-  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235), 2px 2px 4px rgba(134, 44, 56, 0.5450980392);
-}
-nav button:hover::before, nav button:focus-visible::before,
-nav a:hover::before,
-nav a:focus-visible::before {
-  width: calc(100% - 10px);
-}
-nav button:active,
-nav a:active {
-  transform: translate(4.5px);
-  box-shadow: none;
+  flex-wrap: nowrap;
 }
 @media all and (max-width: 700px) {
   nav {
     position: fixed;
     z-index: 999;
     inset: 0;
+    padding-inline: 10vw;
     justify-content: flex-start;
     flex-direction: column;
     padding-top: 40%;
     background: #fff9f9;
   }
-  nav button,
-  nav a {
+  nav button {
     width: 75%;
     max-width: 15rem;
     margin-bottom: 1rem;
     font-size: 1.3rem;
   }
-}
-
-.nav__toggle-mobile {
-  display: none;
-  z-index: 999;
-  padding: 3px;
-  font-size: 2rem;
-  color: #862c38;
-  border: none;
-  background: transparent;
-  transition: 150ms ease;
-}
-.nav__toggle-mobile:hover, .nav__toggle-mobile:focus-visible {
-  color: #d84b52;
-}
-.nav__toggle-mobile:active {
-  font-size: 2.2rem;
 }
 
 .modal {

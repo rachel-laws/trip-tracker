@@ -3,7 +3,11 @@ import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseFilter.js';
 import { createControls } from './expenseEdit.js';
 import { toggleNav, closeNavBar } from './nav.js';
-import { operateCurrencyModal, operateBudgetModal } from './modals.js';
+import {
+  operateTripsModal,
+  operateCurrencyModal,
+  operateBudgetModal,
+} from './modals.js';
 
 const toggleMobileNav = document.querySelector('#toggleMobileNav');
 
@@ -17,6 +21,8 @@ const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterSelect = document.querySelector('#expenseFilterSelect');
 
 const controlsBtn = document.querySelectorAll('.expense__controls-btn');
+const editBtn = document.querySelector('#editExpenseBtn');
+const deleteBtn = document.querySelector('#deleteExpenseBtn');
 
 const initApp = () => {
   // Mobile Navigation
@@ -59,7 +65,7 @@ const initApp = () => {
   });
 
   // Modals
-  //! operateTripsModal();
+  operateTripsModal();
   operateCurrencyModal();
   operateBudgetModal();
 

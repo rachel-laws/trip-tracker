@@ -23,21 +23,15 @@
     <header>
       <img src="/assets/logo.svg" alt="TripTracker" />
       <nav id="navigation" class="mobile-hidden">
-        <a id="nav__btn-trips" class="nav__btn" href="./trips.html">
-          <span class="sr-only">Your </span>
+        <button id="nav__btn-trips" aria-controls="tripsModal">
+          <span class="sr-only">Open </span>
           <i class="bi bi-airplane"></i>Trips
-        </a>
-        <button
-          id="nav__btn-budget"
-          class="nav__btn"
-          aria-controls="budgetModal">
+        </button>
+        <button id="nav__btn-budget" aria-controls="budgetModal">
           <i class="bi bi-cash-stack"></i> Budget
           <span class="sr-only"> Settings</span>
         </button>
-        <button
-          id="nav__btn-currency"
-          class="nav__btn"
-          aria-controls="currency__modal">
+        <button id="nav__btn-currency" aria-controls="currency__modal">
           <i class="bi bi-coin"></i> Currency
           <span class="sr-only"> Settings</span>
         </button>
@@ -231,6 +225,19 @@
           <div id="expenseItems" class="expense__items"></div>
         </div>
       </section>
+      <!-- View Trips -->
+      <dialog id="tripsModal" class="trips__modal modal">
+        <button
+          aria-controls="tripsModal"
+          aria-modal="true"
+          id="closeTripsModal"
+          class="modal__close">
+          <i class="bi bi-x-lg"></i>
+          <span class="sr-only">Trips</span>
+        </button>
+        <p class="trips__title">Your Trips</p>
+        <div class="trips__container"></div>
+      </dialog>
       <!-- Change Currency -->
       <dialog
         id="currencyModal"
