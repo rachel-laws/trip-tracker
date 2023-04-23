@@ -4,7 +4,7 @@ import { toggleElement, filterExpenses } from './expenseFilter.js';
 import { createControls } from './expenseEdit.js';
 import { toggleNav, closeNavBar } from './nav.js';
 import {
-  operateTripsModal,
+  // operateTripsModal,
   operateCurrencyModal,
   operateBudgetModal,
 } from './modals.js';
@@ -65,7 +65,7 @@ const initApp = () => {
   });
 
   // Modals
-  operateTripsModal();
+  // operateTripsModal();
   operateCurrencyModal();
   operateBudgetModal();
 

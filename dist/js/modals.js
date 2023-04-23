@@ -20,14 +20,14 @@ const closeModal = (modalBtn, modal, form) => {
 //* Modals
 
 // Trips Modal
-export const operateTripsModal = () => {
-  const tripsModal = document.querySelector('#tripsModal');
-  const openTripsModal = document.querySelector('#nav__btn-trips');
-  const closeTripsModal = document.querySelector('#closeTripsModal');
+// export const operateTripsModal = () => {
+//   const tripsModal = document.querySelector('#tripsModal');
+//   const openTripsModal = document.querySelector('#nav__btn-trips');
+//   const closeTripsModal = document.querySelector('#closeTripsModal');
 
-  openModal(openTripsModal, tripsModal);
-  closeModal(closeTripsModal, tripsModal);
-};
+//   openModal(openTripsModal, tripsModal);
+//   closeModal(closeTripsModal, tripsModal);
+// };
 
 // Currency Modal
 export const operateCurrencyModal = () => {
