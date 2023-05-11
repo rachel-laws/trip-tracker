@@ -3,11 +3,7 @@ import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseFilter.js';
 import { createControls } from './expenseEdit.js';
 import { toggleNav, closeNavBar } from './nav.js';
-import {
-  // operateTripsModal,
-  operateCurrencyModal,
-  operateBudgetModal,
-} from './modals.js';
+import { operateCurrencyModal, operateBudgetModal } from './modals.js';
 
 const toggleMobileNav = document.querySelector('#toggleMobileNav');
 
@@ -21,8 +17,6 @@ const filterContainer = document.querySelector('#expenseFilterContainer');
 const filterSelect = document.querySelector('#expenseFilterSelect');
 
 const controlsBtn = document.querySelectorAll('.expense__controls-btn');
-const editBtn = document.querySelector('#editExpenseBtn');
-const deleteBtn = document.querySelector('#deleteExpenseBtn');
 
 const initApp = () => {
   // Mobile Navigation
@@ -65,7 +59,6 @@ const initApp = () => {
   });
 
   // Modals
-  // operateTripsModal();
   operateCurrencyModal();
   operateBudgetModal();
 
@@ -77,6 +70,12 @@ const initApp = () => {
 const updateLocalStorage = () => {
   localStorage.setItem('budget', JSON.stringify(budget));
   localStorage.setItem('transactions', JSON.stringify(transactions));
+};
+
+const fadeIn = target => {
+  if (target.classList.contains === visible) {
+  } else if (target.classList.contains === hidden) {
+  }
 };
 
 const updateValues = () => {
