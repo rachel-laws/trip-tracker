@@ -11,7 +11,7 @@
   color: c.$text;
   text-align: center;
 
-  border: v.$border;
+  border: none;
   border-radius: v.$border-radius;
   background: c.$content-bg;
   box-shadow: v.$shadow;
@@ -40,10 +40,9 @@
     font-size: 1rem;
     color: c.$text;
 
-    border: v.$border;
+    border: none;
     border-radius: v.$border-radius;
     background: c.$input-bg;
-    box-shadow: v.$shadow;
   }
 
   select {

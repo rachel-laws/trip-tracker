@@ -16,8 +16,7 @@ select,
   color: c.$btn-text;
   font-weight: 500;
 
-  border: v.$border;
-  box-shadow: v.$shadow;
+  border: none;
   background: c.$btn-bg;
 
   transition: 100ms ease;

@@ -13,9 +13,8 @@ select {
   font-size: 0.9rem;
   color: c.$text;
 
-  border: v.$border;
+  border: none;
   background: c.$input-bg;
-  box-shadow: v.$shadow;
 }
 
 .expense__info {
@@ -70,8 +69,6 @@ select {
     margin-top: 5px;
 
     border-radius: 50%;
-    border: v.$light-border;
-    box-shadow: v.$shadow;
 
     transition: 150ms ease;
 
@@ -83,7 +80,7 @@ select {
 
     &:checked {
       border-width: 4px;
-      border-color: c.$btn-bg;
+      background-color: red;
     }
   }
 }

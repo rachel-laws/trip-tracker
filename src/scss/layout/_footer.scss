@@ -11,9 +11,7 @@ footer {
   height: 4rem;
   font-size: 0.9rem;
 
-  border-top: v.$light-border;
   background: c.$footer-bg;
-  box-shadow: 0px -1px 6px c.$light-shadow-color;
 
   a {
     position: relative;
@@ -24,7 +22,6 @@ footer {
     border-radius: v.$border-radius;
     border: v.$border;
     background: c.$footer-bg;
-    box-shadow: v.$shadow;
 
     transition: 100ms ease;
 

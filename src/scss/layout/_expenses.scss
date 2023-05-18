@@ -9,9 +9,7 @@
   padding: 1rem 2rem 2rem;
 
   background: c.$content-bg;
-  border: v.$light-border;
   border-radius: v.$border-radius;
-  box-shadow: v.$light-shadow;
 
   @include m.mqw {
     padding: 1rem 2rem 1.75rem;
@@ -111,7 +109,7 @@ fieldset {
   font-weight: 600;
 
   border-bottom: 1px solid c.$subheading-text;
-  box-shadow: 0px 7px 6px -6px c.$shadow-color;
+  box-shadow: 0px 7px 6px -6px c.$light-shadow-color;
 
   li:first-of-type {
     margin-left: 0.7rem;
@@ -127,10 +125,8 @@ fieldset {
 .expense__item {
   position: relative;
 
-  border: v.$light-border;
   border-radius: v.$border-radius;
   background: c.$content-bg;
-  box-shadow: v.$light-shadow;
 }
 
 .expense__title {

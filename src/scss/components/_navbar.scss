@@ -17,9 +17,8 @@ nav {
     font-size: 1.1rem;
     color: c.$btn-text;
 
-    border: 1px solid c.$text;
+    border: none;
     background: c.$alt-fill-bg;
-    box-shadow: v.$shadow;
 
     transition: 150ms ease;
 
@@ -46,8 +45,6 @@ nav {
 
     &:hover,
     &:focus-visible {
-      box-shadow: v.$shadow, 2px 2px 4px #862c388b;
-
       &::before {
         width: calc(100% - 10px);
       }
@@ -63,7 +60,6 @@ nav {
     position: fixed;
     z-index: 999;
     inset: 0;
-    padding-inline: calc(1rem + 12vw);
 
     justify-content: flex-start;
     flex-direction: column;
