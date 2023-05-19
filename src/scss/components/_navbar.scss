@@ -18,7 +18,7 @@ nav {
     color: c.$btn-text;
 
     border: none;
-    background: c.$alt-fill-bg;
+    background: c.$btn-bg;
 
     transition: 150ms ease;
 
@@ -50,9 +50,13 @@ nav {
       }
     }
 
+    &:hover,
+    &:focus-visible {
+      background: c.$fill-bg;
+    }
+
     &:active {
       transform: translate(4.5px);
-      box-shadow: none;
     }
   }
 
@@ -65,7 +69,8 @@ nav {
     flex-direction: column;
 
     padding-top: 40%;
-    background: c.$body-bg;
+    padding-inline: 3vw;
+    background: c.$header-bg;
 
     button {
       width: 75%;
@@ -84,7 +89,7 @@ nav {
   padding: 3px;
 
   font-size: 2rem;
-  color: c.$subheading-text;
+  color: c.$btn-bg;
 
   border: none;
   background: transparent;
@@ -93,7 +98,7 @@ nav {
 
   &:hover,
   &:focus-visible {
-    color: c.$btn-bg;
+    color: c.$fill-bg;
   }
 
   &:active {

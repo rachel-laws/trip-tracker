@@ -1,27 +1,26 @@
 // Text
-$text: #3c0109;
-$heading-text: #6f202b;
-$subheading-text: #862c38;
+$text: #0c1121;
+$heading-text: #6c061b;
+$alt-text: #fff;
 
 $budget: linear-gradient(#45eb45, #075e03);
 $balance: linear-gradient(#ff823a, #b83700);
 
 // Inputs
-$input-bg: #fff9f9;
+$input-bg: #ffffff;
 $placeholder: rgba(90 0 0 / 0.69);
 
 // Backgrounds
-$header-bg: #fbeae6;
-$body-bg: #fff9f9;
-$content-bg: #fbeeeb;
-$footer-bg: #fbeae6;
+$header-bg: #131a2f;
+$body-bg: #fff;
+$content-bg: linear-gradient(66deg, #ebebeb, #f3f3f3);
+$footer-bg: #131a2f;
 
 // Buttons
-$btn-bg: #d84b52;
+$btn-bg: #e73e51;
 $btn-text: #f1f1f1;
 $hover: #b53636;
-$fill-bg: #ff8a6d;
-$alt-fill-bg: linear-gradient(33deg, #de2e4c, #d44e33);
+$fill-bg: #fc3737;
 
 // Shadows
 $light-shadow-color: #3c010921;

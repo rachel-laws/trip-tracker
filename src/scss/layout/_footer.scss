@@ -18,10 +18,11 @@ footer {
     z-index: -2;
 
     padding: 0.25rem 0.75rem;
+    font-weight: 500;
 
     border-radius: v.$border-radius;
-    border: v.$border;
-    background: c.$footer-bg;
+    background: c.$btn-bg;
+    color: c.$alt-text;
 
     transition: 100ms ease;
 
@@ -51,7 +52,6 @@ footer {
 
     &:active {
       transform: translate(4.5px);
-      box-shadow: none;
     }
   }
 }

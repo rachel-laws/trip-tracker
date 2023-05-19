@@ -12,5 +12,9 @@ h1 {
 }
 
 label {
-  color: c.$subheading-text;
+  color: c.$heading-text;
+}
+
+.expense__form label {
+  color: c.$alt-text;
 }

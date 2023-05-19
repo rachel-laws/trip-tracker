@@ -19,16 +19,16 @@ const closeModal = (modalBtn, modal, form) => {
 
 //* Modals
 
-// Currency Modal
-export const operateCurrencyModal = () => {
-  const currencyModal = document.querySelector('#currencyModal');
-  const openCurrencyModal = document.querySelector('#nav__btn-currency');
-  const closeCurrencyModal = document.querySelector('#closeCurrencyModal');
-  const currencyForm = document.querySelector('#currencyForm');
+// // Currency Modal
+// export const operateCurrencyModal = () => {
+//   const currencyModal = document.querySelector('#currencyModal');
+//   const openCurrencyModal = document.querySelector('#nav__btn-currency');
+//   const closeCurrencyModal = document.querySelector('#closeCurrencyModal');
+//   const currencyForm = document.querySelector('#currencyForm');
 
-  openModal(openCurrencyModal, currencyModal);
-  closeModal(closeCurrencyModal, currencyModal, currencyForm);
-};
+//   openModal(openCurrencyModal, currencyModal);
+//   closeModal(closeCurrencyModal, currencyModal, currencyForm);
+// };
 
 // Budget Modal
 export const operateBudgetModal = () => {

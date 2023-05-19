@@ -3,7 +3,7 @@ import { addTransaction, totalExpenses, transactions } from './expenses.js';
 import { toggleElement, filterExpenses } from './expenseFilter.js';
 import { createControls } from './expenseEdit.js';
 import { toggleNav, closeNavBar } from './nav.js';
-import { operateCurrencyModal, operateBudgetModal } from './modals.js';
+import { operateBudgetModal } from './modals.js'; /* operateCurrencyModal */
 
 const toggleMobileNav = document.querySelector('#toggleMobileNav');
 
@@ -59,7 +59,7 @@ const initApp = () => {
   });
 
   // Modals
-  operateCurrencyModal();
+  // operateCurrencyModal();
   operateBudgetModal();
 
   // Load data

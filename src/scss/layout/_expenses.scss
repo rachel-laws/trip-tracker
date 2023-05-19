@@ -8,7 +8,7 @@
   align-items: center;
   padding: 1rem 2rem 2rem;
 
-  background: c.$content-bg;
+  background: c.$header-bg;
   border-radius: v.$border-radius;
 
   @include m.mqw {
@@ -20,7 +20,7 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: c.$heading-text;
+    color: c.$alt-text;
     margin-bottom: 1rem;
   }
 }
@@ -34,7 +34,6 @@ fieldset {
   justify-content: space-evenly;
   gap: 1rem;
 
-  background: c.$content-bg;
 
   @include m.mqw {
     flex-direction: column;
@@ -105,10 +104,10 @@ fieldset {
   margin-bottom: 0.9rem;
 
   font-size: 1.1rem;
-  color: c.$subheading-text;
+  color: c.$heading-text;
   font-weight: 600;
 
-  border-bottom: 1px solid c.$subheading-text;
+  border-bottom: 1px solid c.$heading-text;
   box-shadow: 0px 7px 6px -6px c.$light-shadow-color;
 
   li:first-of-type {
@@ -148,7 +147,7 @@ fieldset {
 
   padding: 3px;
 
-  background: c.$subheading-text;
+  background: c.$heading-text;
   border-radius: v.$border-radius;
 
   &:before {
@@ -161,7 +160,7 @@ fieldset {
     height: 0;
 
     border-left: 6px solid transparent;
-    border-bottom: 10px solid c.$subheading-text;
+    border-bottom: 10px solid c.$heading-text;
     border-right: 6px solid transparent;
 
     pointer-events: none;

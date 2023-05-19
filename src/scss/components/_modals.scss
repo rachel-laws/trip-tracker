@@ -8,17 +8,25 @@
   margin: auto;
   padding: 2.5rem 4rem;
 
-  color: c.$text;
   text-align: center;
 
   border: none;
   border-radius: v.$border-radius;
-  background: c.$content-bg;
+  background: c.$header-bg;
   box-shadow: v.$shadow;
 
   &::backdrop {
     background: rgb(0 0 0 / 0.7);
     backdrop-filter: blur(3px);
+  }
+
+  @include m.mqw {
+    padding: 2.5rem 1.5rem;
+  }
+
+  p {
+    font-weight: 500;
+    color: c.$alt-text;
   }
 
   form {
@@ -29,8 +37,8 @@
 
   label {
     font-size: 1.6rem;
-    color: c.$heading-text;
-    font-weight: 600;
+    color: c.$alt-text;
+    font-weight: 500;
   }
 
   select,
@@ -67,7 +75,7 @@
   padding: 5px 7px;
 
   font-size: 1.6rem;
-  color: c.$text;
+  color: c.$alt-text;
 
   border: none;
   background: transparent;
@@ -99,7 +107,7 @@
 
   color: c.$heading-text;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .currency__current {

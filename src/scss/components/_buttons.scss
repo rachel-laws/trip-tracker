@@ -21,15 +21,13 @@ select,
 
   transition: 100ms ease;
 
-  &:active {
-    transform: translate(4.5px);
-    box-shadow: none;
-  }
-
   &:hover,
   &:focus-visible {
-    color: c.$text;
     background: c.$fill-bg;
+  }
+
+  &:active {
+    transform: translate(4.5px);
   }
 }
 
@@ -57,7 +55,7 @@ select,
   bottom: 0;
 
   font-size: 1.2rem;
-  color: c.$subheading-text;
+  color: c.$heading-text;
 
   background: none;
   border: none;
@@ -70,7 +68,7 @@ select,
   }
 
   &:active {
-    color: c.$subheading-text;
+    color: c.$heading-text;
   }
 }
 
@@ -80,7 +78,7 @@ select,
   bottom: 0;
 
   font-size: 1.5rem;
-  color: c.$subheading-text;
+  color: c.$heading-text;
 
   background: transparent;
   border: none;
@@ -102,9 +100,8 @@ select,
 
   font-size: 1.2rem;
   color: c.$heading-text;
-
   border: none;
-  background: c.$content-bg;
+  background: c.$body-bg;
 
   transition: 150ms ease;
 
@@ -117,10 +114,9 @@ select,
   &:hover,
   &:focus-visible {
     color: #dd1010;
-    background: c.$input-bg;
   }
   &:active {
-    color: c.$heading-text;
+    color: c.$header-bg;
   }
 }
 
