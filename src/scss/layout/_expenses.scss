@@ -8,8 +8,9 @@
   align-items: center;
   padding: 1rem 2rem 2rem;
 
-  background: c.$header-bg;
+  background: c.$main-bg;
   border-radius: v.$border-radius;
+  box-shadow: v.$shadow;
 
   @include m.mqw {
     padding: 1rem 2rem 1.75rem;
@@ -20,7 +21,7 @@
     text-align: center;
     font-size: 1.5rem;
     font-weight: 600;
-    color: c.$alt-text;
+    color: c.$light-text;
     margin-bottom: 1rem;
   }
 }
@@ -33,7 +34,6 @@ fieldset {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
-
 
   @include m.mqw {
     flex-direction: column;
@@ -65,7 +65,7 @@ fieldset {
     bottom: 6.5px;
     z-index: 3;
 
-    color: c.$heading-text;
+    color: c.$red-text;
     font-size: 1.9rem;
     pointer-events: none;
   }
@@ -104,10 +104,10 @@ fieldset {
   margin-bottom: 0.9rem;
 
   font-size: 1.1rem;
-  color: c.$heading-text;
+  color: c.$red-text;
   font-weight: 600;
 
-  border-bottom: 1px solid c.$heading-text;
+  border-bottom: 1px solid c.$red-text;
   box-shadow: 0px 7px 6px -6px c.$light-shadow-color;
 
   li:first-of-type {
@@ -126,6 +126,7 @@ fieldset {
 
   border-radius: v.$border-radius;
   background: c.$content-bg;
+  box-shadow: 2px 2px 8px 2px rgb(0 0 0 / 0.05);
 }
 
 .expense__title {
@@ -135,7 +136,12 @@ fieldset {
 .expense__controls-options {
   position: absolute;
   top: 1.85rem;
-  left: -5.65px;
+  left: -5.2px;
+  z-index: 8;
+  box-shadow: v.$light-shadow;
+  border-radius: v.$border-radius;
+
+  animation: fade-in 300ms ease 1;
 }
 
 .expense__controls {
@@ -145,22 +151,22 @@ fieldset {
   @include m.flexCenter;
   gap: 3.25px;
 
-  padding: 3px;
+  padding: 5px;
 
-  background: c.$heading-text;
+  background: c.$red-text;
   border-radius: v.$border-radius;
 
   &:before {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: 2.1rem;
+    left: 0px;
+    bottom: 2.3rem;
 
     width: 0;
     height: 0;
 
     border-left: 6px solid transparent;
-    border-bottom: 10px solid c.$heading-text;
+    border-bottom: 10px solid c.$red-text;
     border-right: 6px solid transparent;
 
     pointer-events: none;

@@ -4,17 +4,17 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  color: c.$text;
+  color: c.$dark-text;
 }
 
 h1 {
-  color: c.$heading-text;
+  color: c.$red-text;
 }
 
 label {
-  color: c.$heading-text;
+  color: c.$red-text;
 }
 
 .expense__form label {
-  color: c.$alt-text;
+  color: c.$light-text;
 }

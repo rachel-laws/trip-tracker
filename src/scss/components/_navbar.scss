@@ -5,7 +5,6 @@
 nav {
   @include m.flexCenter;
   gap: 1rem;
-  flex-wrap: nowrap;
 
   button {
     position: relative;
@@ -21,6 +20,19 @@ nav {
     background: c.$btn-bg;
 
     transition: 150ms ease;
+
+    #nav__btn-currency {
+      position: relative;
+      pointer-events: none;
+    }
+
+    .nav-coming-soon {
+      position: absolute;
+      z-index: 9;
+      left: -0.1rem;
+      top: -0.25rem;
+      width: 30%;
+    }
 
     i {
       margin-right: 3px;
@@ -60,6 +72,15 @@ nav {
     }
   }
 
+  @keyframes slide-in {
+    0% {
+      transform: translate(100vw);
+    }
+    100% {
+      transform: translate(0px);
+    }
+  }
+
   @include m.mqw {
     position: fixed;
     z-index: 999;
@@ -70,7 +91,17 @@ nav {
 
     padding-top: 40%;
     padding-inline: 3vw;
-    background: c.$header-bg;
+    background: c.$main-bg;
+
+    background-image: url('/assets/leaves-pattern.svg');
+    background-size: 500%;
+
+    animation: slide-in 40ms linear 1;
+
+    .nav-coming-soon {
+      left: -0.3rem;
+      top: -0.25rem;
+    }
 
     button {
       width: 75%;

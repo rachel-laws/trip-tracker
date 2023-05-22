@@ -2,9 +2,9 @@
 
 // Borders
 $border-radius: 1px;
-$border: 1px solid a.$text;
-$light-border: 1px solid a.$heading-text;
+$border: 1px solid a.$dark-text;
+$light-border: 1px solid a.$red-text;
 
 // Shadows
-$shadow: 4.5px 4px 4px a.$shadow-color;
-$light-shadow: 4.5px 4px 4px a.$light-shadow-color;
+$shadow: 0 0 4px a.$shadow-color;
+$light-shadow: 0 0 4px a.$light-shadow-color;

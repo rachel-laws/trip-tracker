@@ -55,7 +55,7 @@ select,
   bottom: 0;
 
   font-size: 1.2rem;
-  color: c.$heading-text;
+  color: c.$red-text;
 
   background: none;
   border: none;
@@ -68,7 +68,7 @@ select,
   }
 
   &:active {
-    color: c.$heading-text;
+    color: c.$red-text;
   }
 }
 
@@ -78,7 +78,7 @@ select,
   bottom: 0;
 
   font-size: 1.5rem;
-  color: c.$heading-text;
+  color: c.$red-text;
 
   background: transparent;
   border: none;
@@ -99,7 +99,7 @@ select,
   padding: 0.15rem 0.25rem;
 
   font-size: 1.2rem;
-  color: c.$heading-text;
+  color: c.$red-text;
   border: none;
   background: c.$body-bg;
 
@@ -116,7 +116,7 @@ select,
     color: #dd1010;
   }
   &:active {
-    color: c.$header-bg;
+    color: c.$main-bg;
   }
 }
 
@@ -127,7 +127,7 @@ select,
     background: c.$input-bg;
   }
   &:active {
-    color: c.$heading-text;
+    color: c.$red-text;
   }
 }
 

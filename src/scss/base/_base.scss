@@ -22,6 +22,8 @@ section {
   margin: 0rem auto;
   padding: 2rem;
 
+  animation: fade-in 600ms ease-in 1;
+
   @include m.mqw {
     padding: 0 0 2rem;
   }

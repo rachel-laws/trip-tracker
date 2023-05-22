@@ -34,7 +34,7 @@ select,
   width: 4rem;
   height: 1.7rem;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .expense__form .submit {
     align-self: auto;
     width: 11.5rem;
@@ -141,8 +141,21 @@ select {
   width: 5.25rem;
 }
 
-.expense__title-input {
-  width: 11.5rem;
+.currencyLabel {
+  position: relative;
+}
+
+#selectCurrency {
+  pointer-events: none;
+  outline: none;
+}
+
+.coming-soon {
+  position: absolute;
+  z-index: 9;
+  right: 0.5rem;
+  top: 1.34rem;
+  width: 88%;
 }
 
 .expense__cost-input {
@@ -180,35 +193,33 @@ select {
   border: 4px solid #e73e51;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .expense__filter-container {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 2.3rem;
   left: 0;
+  background: #131a2f;
+  border: 3px solid #131a2f;
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(60, 1, 9, 0.2470588235);
+  animation: fade-in 300ms ease 1;
+}
+.expense__filter-container label {
+  color: #fff !important;
+  font-size: 0.9rem;
 }
 .expense__filter-container select {
   width: min-content;
   margin-top: 2px;
   padding: 2px;
-  text-align: center;
-}
-
-.expense__new-title-form {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-  background: linear-gradient(66deg, #ebebeb, #f3f3f3);
-}
-.expense__new-title-form input {
-  height: 1.3rem;
-  border: 1px solid #6c061b;
-}
-
-.expense__new-title-input {
-  width: 6rem;
-  padding: 0.25rem;
-  border-radius: 1px;
-  font-size: 0.8rem;
+  text-align: left;
 }
 
 nav {
@@ -216,7 +227,6 @@ nav {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  flex-wrap: nowrap;
 }
 nav button {
   position: relative;
@@ -228,6 +238,17 @@ nav button {
   border: none;
   background: #e73e51;
   transition: 150ms ease;
+}
+nav button #nav__btn-currency {
+  position: relative;
+  pointer-events: none;
+}
+nav button .nav-coming-soon {
+  position: absolute;
+  z-index: 9;
+  left: -0.1rem;
+  top: -0.25rem;
+  width: 30%;
 }
 nav button i {
   margin-right: 3px;
@@ -254,7 +275,15 @@ nav button:hover, nav button:focus-visible {
 nav button:active {
   transform: translate(4.5px);
 }
-@media all and (max-width: 550px) {
+@keyframes slide-in {
+  0% {
+    transform: translate(100vw);
+  }
+  100% {
+    transform: translate(0px);
+  }
+}
+@media all and (max-width: 530px) {
   nav {
     position: fixed;
     z-index: 999;
@@ -264,6 +293,13 @@ nav button:active {
     padding-top: 40%;
     padding-inline: 3vw;
     background: #131a2f;
+    background-image: url("/assets/leaves-pattern.svg");
+    background-size: 500%;
+    animation: slide-in 40ms linear 1;
+  }
+  nav .nav-coming-soon {
+    left: -0.3rem;
+    top: -0.25rem;
   }
   nav button {
     width: 75%;
@@ -298,13 +334,14 @@ nav button:active {
   border: none;
   border-radius: 1px;
   background: #131a2f;
-  box-shadow: 4.5px 4px 4px rgba(60, 1, 9, 0.2470588235);
+  box-shadow: 0 0 4px rgba(60, 1, 9, 0.2470588235);
+  animation: fade-in 100ms ease 1;
 }
 .modal::backdrop {
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .modal {
     padding: 2.5rem 1.5rem;
   }
@@ -401,7 +438,7 @@ header {
 header img {
   width: 13rem;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   header {
     padding-inline: 0.5rem 0.75rem;
   }
@@ -445,8 +482,9 @@ header img {
   padding: 1rem 2rem 2rem;
   background: #131a2f;
   border-radius: 1px;
+  box-shadow: 0 0 4px rgba(60, 1, 9, 0.2470588235);
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .expense__form {
     padding: 1rem 2rem 1.75rem;
   }
@@ -469,7 +507,7 @@ fieldset {
   justify-content: space-evenly;
   gap: 1rem;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .expense__info {
     flex-direction: column;
     align-items: center;
@@ -488,7 +526,7 @@ fieldset {
   gap: 10px 14px;
   margin-bottom: 1rem;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .expense__type {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px 5px;
@@ -523,7 +561,7 @@ fieldset {
   font-size: 1.1rem;
   text-align: center;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .expense__subheadings,
   .expense__item {
     grid-template-columns: repeat(3, 1fr);
@@ -552,7 +590,8 @@ fieldset {
 .expense__item {
   position: relative;
   border-radius: 1px;
-  background: linear-gradient(66deg, #ebebeb, #f3f3f3);
+  background: #ebebeb;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.05);
 }
 
 .expense__title {
@@ -562,7 +601,11 @@ fieldset {
 .expense__controls-options {
   position: absolute;
   top: 1.85rem;
-  left: -5.65px;
+  left: -5.2px;
+  z-index: 8;
+  box-shadow: 0 0 4px rgba(60, 1, 9, 0.1294117647);
+  border-radius: 1px;
+  animation: fade-in 300ms ease 1;
 }
 
 .expense__controls {
@@ -572,15 +615,15 @@ fieldset {
   justify-content: center;
   align-items: center;
   gap: 3.25px;
-  padding: 3px;
+  padding: 5px;
   background: #6c061b;
   border-radius: 1px;
 }
 .expense__controls:before {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 2.1rem;
+  left: 0px;
+  bottom: 2.3rem;
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
@@ -598,6 +641,9 @@ footer {
   height: 4rem;
   font-size: 0.9rem;
   background: #131a2f;
+  box-shadow: 0 0 4px rgba(60, 1, 9, 0.2470588235);
+  background-image: url("/assets/leaves-pattern.svg");
+  background-size: 80%;
 }
 footer a {
   position: relative;
@@ -634,6 +680,7 @@ footer a:active {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline-color: #e73e51;
 }
 
 img,
@@ -689,8 +736,9 @@ section {
   max-width: 900px;
   margin: 0rem auto;
   padding: 2rem;
+  animation: fade-in 600ms ease-in 1;
 }
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   section {
     padding: 0 0 2rem;
   }
@@ -731,7 +779,7 @@ section {
   overflow: hidden;
 }
 
-@media all and (max-width: 550px) {
+@media all and (max-width: 530px) {
   .mobile-hidden {
     display: none;
   }

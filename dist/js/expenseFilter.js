@@ -57,3 +57,16 @@ const hideExpense = expense => {
   expense.classList.add('hidden');
   expense.setAttribute('aria-hidden', 'true');
 };
+
+document.addEventListener('click', function handleClickOutsideBox(event) {
+  if (filterContainer.classList.contains('visible__block')) {
+    console.log('user clicked: ', event.target);
+
+    if (
+      !filterContainer.contains(event.target) &&
+      !filterBtn.contains(event.target)
+    ) {
+      toggleElement(filterContainer, filterBtn);
+    }
+  }
+});

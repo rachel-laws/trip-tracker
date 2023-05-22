@@ -12,8 +12,10 @@
 
   border: none;
   border-radius: v.$border-radius;
-  background: c.$header-bg;
+  background: c.$main-bg;
   box-shadow: v.$shadow;
+
+  animation: fade-in 100ms ease 1;
 
   &::backdrop {
     background: rgb(0 0 0 / 0.7);
@@ -26,7 +28,7 @@
 
   p {
     font-weight: 500;
-    color: c.$alt-text;
+    color: c.$light-text;
   }
 
   form {
@@ -37,7 +39,7 @@
 
   label {
     font-size: 1.6rem;
-    color: c.$alt-text;
+    color: c.$light-text;
     font-weight: 500;
   }
 
@@ -46,7 +48,7 @@
     padding: 0.5rem;
 
     font-size: 1rem;
-    color: c.$text;
+    color: c.$dark-text;
 
     border: none;
     border-radius: v.$border-radius;
@@ -75,7 +77,7 @@
   padding: 5px 7px;
 
   font-size: 1.6rem;
-  color: c.$alt-text;
+  color: c.$light-text;
 
   border: none;
   background: transparent;
@@ -105,7 +107,7 @@
 .currency__title {
   margin-bottom: 1rem;
 
-  color: c.$heading-text;
+  color: c.$red-text;
   font-size: 1.6rem;
   font-weight: 500;
 }

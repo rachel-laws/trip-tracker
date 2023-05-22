@@ -27,10 +27,18 @@
           <i class="bi bi-cash-stack"></i> Budget
           <span class="sr-only"> Settings</span>
         </button>
-        <!-- <button id="nav__btn-currency" aria-controls="currencyModal">
+        <button
+          id="nav__btn-currency"
+          aria-controls="currencyModal"
+          disabled
+          aria-hidden="true">
           <i class="bi bi-coin"></i> Currency
           <span class="sr-only"> Settings</span>
-        </button> -->
+          <img
+            class="nav-coming-soon"
+            src="/assets/nav-coming-soon.png"
+            alt="Coming Soon" />
+        </button>
       </nav>
       <button
         id="toggleMobileNav"
@@ -154,13 +162,13 @@
             </div>
             <div class="expense__info">
               <label for="setExpenseTitle">
-                Title
+                Expense
                 <input
                   id="setExpenseTitle"
                   class="expense__title-input"
                   type="text"
                   name="setExpenseTitle"
-                  placeholder="Enter Expense Title"
+                  placeholder="Expense Title"
                   required
                   autocomplete="new-password" />
               </label>
@@ -175,9 +183,16 @@
                     placeholder="$0.00"
                     required />
                 </label>
-                <label for="selectCurrency">
-                  <span class="sr-only">Expense </span>Currency
-                  <select id="selectCurrency" name="changeCurrency">
+                <label for="selectCurrency" class="currencyLabel">
+                  <span class="sr-only">Coming soon: Expense </span>Currency
+                  <img
+                    class="coming-soon"
+                    src="/assets/coming-soon.png"
+                    alt="Coming Soon" />
+                  <select
+                    id="selectCurrency"
+                    name="changeCurrency"
+                    tabindex="-1">
                     <option id="USD" class="default" value="USD">USD</option>
                     <option id="EUR" value="EUR">Euros</option>
                   </select>
@@ -194,7 +209,7 @@
         <div class="expense__container">
           <h1 class="expense__heading">Expenses</h1>
           <ul class="expense__subheadings">
-            <li>Title</li>
+            <li>Item</li>
             <li>Cost</li>
             <li>Date</li>
             <li class="mobile-hidden">Balance</li>
@@ -240,7 +255,7 @@
         <div class="trips__container"></div>
       </dialog>
       <!-- Change Currency -->
-      <dialog
+      <!-- <dialog
         id="currencyModal"
         class="currency__modal modal"
         aria-modal="true">
@@ -279,7 +294,7 @@
             id="submitCurrencyBtn"
             value="Enter" />
         </form>
-      </dialog>
+      </dialog> -->
       <!-- Change Budget -->
       <dialog id="budgetModal" class="budget__modal modal" aria-modal="true">
         <button

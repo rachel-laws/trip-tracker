@@ -11,7 +11,11 @@ footer {
   height: 4rem;
   font-size: 0.9rem;
 
-  background: c.$footer-bg;
+  background: c.$main-bg;
+  box-shadow: v.$shadow;
+
+  background-image: url('/assets/leaves-pattern.svg');
+  background-size: 80%;
 
   a {
     position: relative;
@@ -22,7 +26,7 @@ footer {
 
     border-radius: v.$border-radius;
     background: c.$btn-bg;
-    color: c.$alt-text;
+    color: c.$light-text;
 
     transition: 100ms ease;
 

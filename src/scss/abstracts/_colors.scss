@@ -1,7 +1,7 @@
 // Text
-$text: #0c1121;
-$heading-text: #6c061b;
-$alt-text: #fff;
+$dark-text: #0c1121;
+$red-text: #6c061b;
+$light-text: #fff;
 
 $budget: linear-gradient(#45eb45, #075e03);
 $balance: linear-gradient(#ff823a, #b83700);
@@ -11,10 +11,9 @@ $input-bg: #ffffff;
 $placeholder: rgba(90 0 0 / 0.69);
 
 // Backgrounds
-$header-bg: #131a2f;
+$main-bg: #131a2f;
 $body-bg: #fff;
-$content-bg: linear-gradient(66deg, #ebebeb, #f3f3f3);
-$footer-bg: #131a2f;
+$content-bg: #ebebeb;
 
 // Buttons
 $btn-bg: #e73e51;
